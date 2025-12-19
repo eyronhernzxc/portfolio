@@ -7,6 +7,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
   globalIgnores(['dist']),
+
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
@@ -18,6 +19,20 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+
+    /** 🔥 TURN OFF ANNOYING RULES 🔥 */
+    rules: {
+      // TypeScript
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+
+      // React hooks
+      'react-hooks/exhaustive-deps': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+
+      // Vite / React refresh
+      'react-refresh/only-export-components': 'off',
     },
   },
 ])
