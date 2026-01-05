@@ -1,32 +1,57 @@
 import { useState, useEffect } from "react";
 import BlogCard from "./card";
 
+// Grab all data.ts from blogs folders
+const blogModules = import.meta.glob("../../pages/blogs/*/data.ts");
+
+interface BlogData {
+    title: string;
+    desc: string;
+    link: string;
+    img: string;
+    readtime: string;
+}
+
 const BlogSection = () => {
+    const [blogs, setBlogs] = useState<BlogData[]>([]);
     const [showAll, setShowAll] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
-    // Detect mobile screen
+    // Detect mobile
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 640); // Tailwind sm breakpoint
-        handleResize(); // set initially
+        const handleResize = () => setIsMobile(window.innerWidth < 640);
+        handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    // Example blogs
-    const blogs: any[] = [
-        { title: "Blog 1", desc: "Description 1", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 2", desc: "Description 2", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 3", desc: "Description 3", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 4", desc: "Description 4", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 5", desc: "Description 5", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 6", desc: "Description 6", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 7", desc: "Description 7", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 8", desc: "Description 8", link: "#", img: "/blog/blog1.jpg" },
-        { title: "Blog 9", desc: "Description 9", link: "#", img: "/blog/blog1.jpg" },
-    ];
+    useEffect(() => {
+        const loadBlogs = async () => {
+            const blogList: BlogData[] = [];
 
-    // Determine initial limit based on device
+            for (const path in blogModules) {
+                const folderName = path.split("/").slice(-2, -1)[0]; // get folder name
+                const importer = blogModules[path] as () => Promise<{ default: any }>;
+                const module = await importer();
+                const data = module.default;
+
+                blogList.push({
+                    title: data.title,
+                    desc: data.description,
+                    link: `/blogs/${folderName}`,
+                    img: data.img,
+                    readtime: data.readtime
+                });
+            }
+
+            blogList.sort((a, b) => a.title.localeCompare(b.title));
+
+            setBlogs(blogList);
+        };
+
+        loadBlogs();
+    }, []);
+
     const initialLimit = isMobile ? 3 : 8;
     const displayedBlogs = showAll ? blogs : blogs.slice(0, initialLimit);
 
@@ -40,6 +65,7 @@ const BlogSection = () => {
                         desc={blog.desc}
                         link={blog.link}
                         img={blog.img}
+                        readtime={blog.readtime}
                     />
                 ))}
             </div>

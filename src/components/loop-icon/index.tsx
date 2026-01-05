@@ -414,7 +414,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                             "filter grayscale transition duration-300 ease-in-out",
                             scaleOnHover &&
                                 "transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120",
-                            "group/item-hover:filter-none"
+                            "group-hover/item:filter-none"
                         )}
                         src={(item as any).src}
                         srcSet={(item as any).srcSet}

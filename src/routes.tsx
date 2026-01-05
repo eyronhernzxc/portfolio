@@ -1,20 +1,20 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages/home";
-import { InfyHowToUse } from "./pages/blogs/reactify";
+import BlogPage from "@/pages/blog.tsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    Component: HomePage,
-  },
-  {
-    path: "/reactor-blog",
-    Component: InfyHowToUse,
-  },
-  {
-    path: "*",
-    element: <>NOT FOUND</>,
-  },
+      {
+        path: "/",
+        Component: HomePage,
+      },
+    {
+        path: "/blogs/*",
+        Component: BlogPage,
+    },
+      {
+        path: "*",
+        element: <>NOT FOUND</>,
+      },
 ]);
 
 // Minimal functional component
