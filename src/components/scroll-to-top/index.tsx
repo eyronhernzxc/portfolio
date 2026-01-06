@@ -4,6 +4,7 @@ const ScrollToTop = () => {
     const [visible, setVisible] = useState(false);
     const [hovered, setHovered] = useState(false);
     const [showLabel, setShowLabel] = useState(false);
+    // @ts-ignore
     const labelTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const lastVisibleRef = useRef(false); // track last visibility
 
