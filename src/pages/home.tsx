@@ -8,6 +8,7 @@ import { BlogSection } from "@/sections/blog";
 import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
 import { Fragment} from "react";
+import ScrollToTop from "@/components/scroll-to-top";
 
 const HomePage = () => {
     const imageLogos = [
@@ -43,6 +44,8 @@ const HomePage = () => {
             </div>
             <LightRaysBackground />
             <TopBar />
+
+            <ScrollToTop />
             <div className="fixed bottom-0 w-full z-10 pointer-events-none">
                 <GradualBlurMemo
                     target="parent"
