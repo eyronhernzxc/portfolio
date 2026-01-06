@@ -2,11 +2,13 @@ import { useEffect, useState, useRef } from "react";
 
 const ScrollToTop = () => {
     const [visible, setVisible] = useState(false);
-    const [hovered, setHovered] = useState(false);
     const [showLabel, setShowLabel] = useState(false);
     // @ts-ignore
     const labelTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const lastVisibleRef = useRef(false); // track last visibility
+    const lastVisibleRef = useRef(false);
+
+    // Detect if device is touch (mobile)
+    const isTouchDevice = typeof window !== "undefined" && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,17 +18,18 @@ const ScrollToTop = () => {
 
             setVisible(shouldShow);
 
-            // Only show the label if button just appeared
+            // Only show label if button just appeared
             if (shouldShow && !lastVisibleRef.current) {
                 setShowLabel(true);
 
+                // Hide label after 2s on mobile or 2s on desktop if not hovered
                 if (labelTimeoutRef.current) clearTimeout(labelTimeoutRef.current);
                 labelTimeoutRef.current = setTimeout(() => {
                     setShowLabel(false);
                 }, 2000);
             }
 
-            // If button disappears, hide label and clear timer
+            // Hide label if button disappears
             if (!shouldShow) {
                 setShowLabel(false);
                 if (labelTimeoutRef.current) {
@@ -35,7 +38,7 @@ const ScrollToTop = () => {
                 }
             }
 
-            lastVisibleRef.current = shouldShow; // update last state
+            lastVisibleRef.current = shouldShow;
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -51,11 +54,13 @@ const ScrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
-    const labelVisible = showLabel || hovered;
+    const [hovered, setHovered] = useState(false);
+    const labelVisible = showLabel || (!isTouchDevice && hovered);
 
     return (
-        <div className="fixed bottom-8 right-8 z-50 flex flex-col items-center group">
-            {/* Label */}
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center sm:bottom-8 sm:right-8 sm:left-auto sm:translate-x-0">
+
+        {/* Label */}
             <span
                 className={`
                     mb-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-sm

@@ -4,6 +4,7 @@ import { HomePage } from "./pages/home";
 import AppRouter from "./routes";
 const App = () => {
     useEffect(() => {
+        window.scrollTo(0, 0);
         const lenis = new Lenis();
         const raf = (time: number) => {
             lenis.raf(time);
@@ -11,7 +12,6 @@ const App = () => {
         };
         requestAnimationFrame(raf);
     }, []);
-
 
     return (
         <>
