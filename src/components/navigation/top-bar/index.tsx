@@ -25,10 +25,11 @@ const TopBar = () => {
                 <span className="uppercase font-black text-white/30 tracking-wider grow text-sm sm:text-base">
                     ivan martin
                 </span>
-                {Icons.map(({ icon: Icon }, index) => (
+                {Icons.map(({ icon: Icon, link }, index) => (
                     <button
                         key={index}
                         className="group cursor-pointer rounded-lg p-2.5 hover:bg-neutral-900 transition-colors"
+                        onClick={() => window.open(link, "_blank")}
                     >
                         <Icon
                             size={20}

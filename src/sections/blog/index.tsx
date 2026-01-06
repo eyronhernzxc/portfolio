@@ -57,7 +57,13 @@ const BlogSection = () => {
 
     return (
         <div className="w-full flex flex-col items-center relative mb-24 px-4 -translate-y-20">
-            <div className="max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 justify-items-center">
+            <p className="text-center text-sm text-white/50 uppercase tracking-widest">
+                Code in Action
+            </p>
+            <p className="text-center text-3xl font-bold text-white/70">
+                Tutorials & How-To’s
+            </p>
+            <div className="mt-14 max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 justify-items-center">
                 {displayedBlogs.map((blog, index) => (
                     <BlogCard
                         key={index}

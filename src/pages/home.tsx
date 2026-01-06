@@ -11,19 +11,19 @@ import { Fragment} from "react";
 
 const HomePage = () => {
     const imageLogos = [
-        { src: "/assets/laravel.svg", alt: "Company 1" },
-        { src: "/assets/react.svg", alt: "Company 2" },
-        { src: "/assets/dotnet.svg", alt: "Company 3" },
-        { src: "/assets/git.svg", alt: "Company 3" },
-        { src: "/assets/nextjs.svg", alt: "Company 3" },
-        { src: "/assets/node.svg", alt: "Company 3" },
-        { src: "/assets/typescript.svg", alt: "Company 3" },
-        { src: "/assets/vite.svg", alt: "Company 3" },
-        { src: "/assets/express.svg", alt: "Company 3" },
-        { src: "/assets/py.svg", alt: "Company 3" },
-        { src: "/assets/redux.svg", alt: "Company 3" },
-        { src: "/assets/tailwind.svg", alt: "Company 3" },
-    ];
+            { src: "/assets/laravel.svg", alt: "laravel icon" },
+            { src: "/assets/react.svg", alt: "react icon" },
+            { src: "/assets/dotnet.svg", alt: "dotnet icon" },
+            { src: "/assets/git.svg", alt: "git icon" },
+            { src: "/assets/nextjs.svg", alt: "nextjs icon" },
+            { src: "/assets/node.svg", alt: "node icon" },
+            { src: "/assets/typescript.svg", alt: "typescript icon" },
+            { src: "/assets/vite.svg", alt: "vite icon" },
+            { src: "/assets/express.svg", alt: "express icon" },
+            { src: "/assets/py.svg", alt: "python icon" },
+            { src: "/assets/redux.svg", alt: "redux icon" },
+            { src: "/assets/tailwind.svg", alt: "tailwind icon" },
+    ]
     return (
         <Fragment>
             <div
@@ -71,6 +71,7 @@ const HomePage = () => {
                     className="cursor-pointer"
                 />
             </div>
+
             <ProjectSection />
             <BlogSection />
         </Fragment>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ColorThief from "colorthief";
+import GlareHover from "@/components/glare-hover";
 
 const BlogCard = ({
                       title = "Blog Post Title",
@@ -42,6 +43,7 @@ const BlogCard = ({
                     boxShadow: isHovered ? `0 0 25px 10px ${shadowColor}` : undefined,
                 }}
             >
+
                 <div className="w-full h-40 rounded-xl overflow-hidden">
                     <img
                         ref={imgRef}
@@ -62,6 +64,14 @@ const BlogCard = ({
 
                     <div className="w-full p-1 mt-4 text-xs text-white/30">{readtime} read time</div>
                 </div>
+                <GlareHover
+                    className="!size-full !border-none !absolute top-0 left-0"
+                    glareOpacity={0.3}
+                    glareAngle={-30}
+                    glareSize={300}
+                    transitionDuration={800}
+                    playOnce={false}
+                />
             </div>
         </div>
     );
