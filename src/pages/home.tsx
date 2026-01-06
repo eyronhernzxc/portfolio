@@ -9,7 +9,6 @@ import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
 import ScrollToTop from "@/components/scroll-to-top";
 import CountUp from "@/components/count";
-import PageLoading from "@/components/page-loading";
 
 const HomePage = () => {
     const [loading, setLoading] = useState(true);
