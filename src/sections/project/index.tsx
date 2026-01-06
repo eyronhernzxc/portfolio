@@ -8,7 +8,6 @@ import gsap from "gsap";
 gsap.registerPlugin(ScrollTrigger);
 
 export const ProjectSection = () => {
-    const container = useRef(null);
 
     return (
         <main className="max-w-7xl mx-auto">
