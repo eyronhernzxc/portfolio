@@ -1,6 +1,6 @@
 const ContactComponent = () => {
     return (
-        <div className="hidden md:block w-[90%] translate-x-1/2 right-1/2 md:w-[270px] space-y-3 fixed md:translate-x-0 bottom-8 md:right-8 z-50 gradient-4 border border-white/10 p-4 shadow-lg shadow-neutral-900 rounded-xl">
+        <div className="w-[90%] translate-x-1/2 right-1/2 md:w-[270px] space-y-3 fixed md:translate-x-0 bottom-8 md:right-8 z-50 gradient-4 border border-white/10 p-4 shadow-lg shadow-neutral-900 rounded-xl">
             <div className="flex gap-3">
                 <p className="text-xs text-white/50">Get in touch</p>
             </div>

@@ -50,7 +50,7 @@ const HomePage = () => {
             const scrollPosition = window.scrollY + window.innerHeight;
             const pageHeight = document.documentElement.scrollHeight;
 
-            if (scrollPosition >= pageHeight - 50) { // 50px from bottom
+            if (scrollPosition >= pageHeight - 400) { // 50px from bottom
                 setShowContactTip(true);
             } else {
                 setShowContactTip(false);

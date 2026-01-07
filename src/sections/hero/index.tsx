@@ -1,7 +1,7 @@
 
 const HeroSection = () => {
     return (
-        <section className="h-[85vh] flex  justify-center">
+        <section className="h-[85vh] min-h-[570px] flex  justify-center">
             <div className="w-2xl m-auto">
                 <p className="text-5xl px-5 md:px-0 text-center font-semibold ">
                     Software Developer
