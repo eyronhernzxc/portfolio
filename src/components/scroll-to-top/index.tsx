@@ -58,12 +58,12 @@ const ScrollToTop = () => {
     const labelVisible = showLabel || (!isTouchDevice && hovered);
 
     return (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center sm:bottom-8 sm:right-8 sm:left-auto sm:translate-x-0">
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center justify-end ">
 
         {/* Label */}
             <span
                 className={`
-                    mb-2 px-3 py-1 rounded-full bg-neutral-900 text-white text-sm
+                    mb-2 px-3 py-1 rounded-full backdrop-blur-md bg-neutral-900/50 border border-white/10 text-white/50 text-sm
                     transition-all duration-300
                     ${labelVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}
                 `}
@@ -78,11 +78,19 @@ const ScrollToTop = () => {
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
                 className={`
-                    relative p-3 rounded-full bg-neutral-900 cursor-pointer text-white/50 shadow-lg
-                    transition-all duration-300 
-                    ${visible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+                    relative p-3 rounded-md bg-neutral-900/20  cursor-pointer text-white/50 shadow-lg
+                    transition-all duration-300 opacity-20 hover:opacity-100 flex items-center justify-center
+                    ${visible ? "pointer-events-auto" : "!opacity-0 pointer-events-none"}
                 `}
             >
+                {/*<svg fill="#ffffff" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xmlSpace="preserve" className="transition-all duration-300 ease-out opacity-50 hover:opacity-100">*/}
+                {/*    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>*/}
+                {/*    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>*/}
+                {/*    <g id="SVGRepo_iconCarrier"><g><g>*/}
+                {/*        <path d="M509.501,249.969L262.034,2.502c-3.337-3.336-8.73-3.336-12.066,0L2.501,249.969c-1.604,1.596-2.5,3.772-2.5,6.033 v247.467c0,3.447,2.082,6.562,5.265,7.885c3.191,1.314,6.852,0.589,9.301-1.852l241.434-241.434l241.434,241.434 c1.63,1.63,3.814,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.191-1.323,5.265-4.437,5.265-7.885V256.002 C512.001,253.741,511.105,251.565,509.501,249.969z">*/}
+                {/*        </path>*/}
+                {/*    </g></g> </g>*/}
+                {/*</svg>*/}
                 {/* Arrow */}
                 <svg
                     fill="#ffffff"

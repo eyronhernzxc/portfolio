@@ -19,9 +19,21 @@ const JWTParserUsage = () => {
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">{data.title}</h1>
                     <p className="text-gray-400 text-sm sm:text-base">{data.description}</p>
                     <p className="text-gray-500 text-xs sm:text-sm">{data.readtime} read time</p>
-                </div>
 
-                <span className="mt-4 mb-6 sm:mb-10 block w-full h-px bg-white"></span>
+                    {/* NPM Link */}
+                    <div className="mt-2">
+                        <a
+                            href="https://www.npmjs.com/package/jsonwebtoken-parser"
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="text-blue-400 hover:text-blue-500 underline text-sm sm:text-base"
+                        >
+                            View package on npm
+                        </a>
+                    </div>
+
+                    <span className="mt-4 mb-6 sm:mb-10 block w-full h-px bg-white"></span>
+                </div>
 
                 {/* Installation */}
                 <div className="space-y-4">
@@ -41,26 +53,33 @@ const JWTParserUsage = () => {
                 <div className="space-y-4">
                     <h2 className="text-xl sm:text-2xl font-semibold text-white">Basic Usage</h2>
                     <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <code>
+
 {`const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...";
 
 const { headers, claims, parsed, signature, validate } = new Jwt(tokenString);
 
 // OR
 const jwt = new Jwt(tokenString);`}
+                        </code>
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Accessing Headers & Claims</h2>
                     <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <code>
 {`const sub = claims.get('sub');
 const typ = headers.get('typ');
 const hasExp = claims.has('exp');`}
+                        </code>
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Validating JWT Claims</h2>
                     <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <code>
 {`const isExpired = validate.isExpired();
 const isRelatedTo = validate.isRelatedTo(sub);
 const hasBeenIssuedBy = validate.hasBeenIssuedBy('https://example.com');`}
+                            </code>
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Accessing Signature</h2>

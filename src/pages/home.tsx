@@ -9,10 +9,11 @@ import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
 import ScrollToTop from "@/components/scroll-to-top";
 import CountUp from "@/components/count";
-
+import ContactComponent from "@/components/contact-component";
 const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [slideUp, setSlideUp] = useState(false);
+    const [showContactTip, setShowContactTip] = useState(false); // NEW
 
     const imageLogos = [
         { src: "/assets/laravel.svg", alt: "laravel icon" },
@@ -29,8 +30,8 @@ const HomePage = () => {
         { src: "/assets/tailwind.svg", alt: "tailwind icon" },
     ];
 
+    // Loading screen
     useEffect(() => {
-
         const duration = 1500;
 
         const timeout = setTimeout(() => {
@@ -41,6 +42,23 @@ const HomePage = () => {
         }, duration);
 
         return () => clearTimeout(timeout);
+    }, []);
+
+    // Show contact tip at bottom
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const pageHeight = document.documentElement.scrollHeight;
+
+            if (scrollPosition >= pageHeight - 50) { // 50px from bottom
+                setShowContactTip(true);
+            } else {
+                setShowContactTip(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
@@ -60,16 +78,13 @@ const HomePage = () => {
                         patternRefreshInterval={2}
                         patternAlpha={10}
                     />
-                    {/*<PageLoading />*/}
                     <span className="text-3xl font-bold mb-4">
                         <CountUp to={100} from={0} duration={1.5} startWhen={true} />%
                     </span>
-                    {/*<span className="text-lg animate-pulse">Loading...</span>*/}
                 </div>
             )}
-            {/*{!loading && (*/}
-            {/*    <>*/}
-                    {/* Backgrounds */}
+
+            {/* Backgrounds */}
             <div
                 style={{
                     width: "100%",
@@ -90,7 +105,6 @@ const HomePage = () => {
             <TopBar />
             <ScrollToTop />
 
-            {/* Gradual Blur */}
             <div className="fixed bottom-0 w-full z-10 pointer-events-none">
                 <GradualBlurMemo
                     target="parent"
@@ -104,10 +118,8 @@ const HomePage = () => {
                 />
             </div>
 
-            {/* Hero Section */}
             <HeroSection />
 
-            {/* Logo Loop */}
             <div className="relative max-w-5xl m-auto mb-35 -translate-y-20">
                 <LogoLoop
                     logos={imageLogos}
@@ -126,8 +138,11 @@ const HomePage = () => {
 
             <ProjectSection />
             <BlogSection />
-            {/*    </>*/}
-            {/*)}*/}
+
+            {/* Contact pop tip */}
+            {showContactTip && (
+                <ContactComponent />
+            )}
         </Fragment>
     );
 };

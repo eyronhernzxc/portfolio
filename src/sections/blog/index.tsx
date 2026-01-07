@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import BlogCard from "./card";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {useGSAP} from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +17,7 @@ interface BlogData {
 
 const BlogSection = () => {
     const [blogs, setBlogs] = useState<BlogData[]>([]);
-    const [showAll, setShowAll] = useState(false);
+    const [displayCount, setDisplayCount] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -46,66 +45,75 @@ const BlogSection = () => {
                     desc: data.description,
                     link: `/blogs/${folderName}`,
                     img: data.img,
-                    readtime: data.readtime
+                    readtime: data.readtime,
                 });
             }
 
             blogList.sort((a, b) => a.title.localeCompare(b.title));
             setBlogs(blogList);
+
+            setDisplayCount(isMobile ? 3 : 5);
         };
 
         loadBlogs();
-    }, []);
+    }, [isMobile]);
 
-    const initialLimit = isMobile ? 3 : 8;
-    const displayedBlogs = showAll ? blogs : blogs.slice(0, initialLimit);
+    const displayedBlogs = blogs.slice(0, displayCount);
 
-    useGSAP(() => {
+    const animateNewCards = () => {
         if (!containerRef.current) return;
 
-        const cards = containerRef.current.querySelectorAll(".blog-card");
+        // Select only visible cards that have not been animated yet
+        const cards = Array.from(containerRef.current.querySelectorAll(".blog-card"))
+            .slice(-3); // animate only the last 3 new cards
 
-        gsap.set(cards, { y: 150, opacity: 0, scale: 1 });
-
-        const tl = gsap.to(cards, {
-            y: 0,
-            opacity: 1,
-            scale: 1.05,
-            duration: 1.2,
-            ease: "power3.out",
-            stagger: 0.15,
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleActions: "play reverse play reverse",
-                markers: false,
+        gsap.fromTo(
+            cards,
+            { y: 150, opacity: 0, scale: 1 },
+            {
+                y: 0,
+                opacity: 1,
+                scale: 1.05,
+                duration: 1.2,
+                ease: "power3.out",
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: containerRef.current,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none",
+                    markers: false,
+                },
             }
-        });
+        );
+    };
 
-        return () => {
-            tl.kill();
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
-    }, [displayedBlogs]);
+    useEffect(() => {
+        animateNewCards();
+    }, [displayCount]); // triggers animation only when new blogs are added
+
+    const handleSeeMore = () => {
+        setDisplayCount((prev) => Math.min(prev + 3, blogs.length));
+    };
 
     return (
         <div
             ref={containerRef}
-            className="blog-section w-full flex flex-col items-center relative mb-24 px-4 -translate-y-20"
+            className="blog-section w-full flex flex-col items-center relative mb-40 px-4 -translate-y-20"
         >
             <p className="text-center text-sm text-white/50 uppercase tracking-widest">
-                Code in Action
+                Guides & Tutorials
             </p>
             <p className="text-center text-3xl font-bold text-white/70">
-                Tutorials & How-To’s
+                How to Build & Use My Projects
             </p>
-            <div className="mt-14 max-w-7xl w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 justify-items-center">
+
+            <div className="mt-14 max-w-5xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-12 place-items-center px-6">
                 {displayedBlogs
                     .slice()
-                    .reverse() // bottom-to-top effect
+                    .reverse()
                     .map((blog, index) => (
-                        <div key={index} className="blog-card w-full">
+                        <div key={index} className="w-full md:w-72 max-w-sm blog-card">
                             <BlogCard
                                 title={blog.title}
                                 desc={blog.desc}
@@ -117,10 +125,10 @@ const BlogSection = () => {
                     ))}
             </div>
 
-            {!showAll && blogs.length > initialLimit && (
+            {displayCount < blogs.length && (
                 <button
                     className="mt-8 px-6 py-3 bg-neutral-800 text-white rounded-lg transition hover:bg-neutral-700 cursor-pointer"
-                    onClick={() => setShowAll(true)}
+                    onClick={handleSeeMore}
                 >
                     See More
                 </button>

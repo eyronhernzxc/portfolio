@@ -35,7 +35,7 @@ const BlogCard = ({
     return (
         <div className="p-2.5 lg:p-0">
             <div
-                className={`${gradientClass} relative border-2 border-white/10 w-full md:w-72 h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
+                className={`${gradientClass} relative border-2 border-white/10 w-full h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
                 onClick={() => window.open(link, "_blank")}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -52,6 +52,15 @@ const BlogCard = ({
                         className="group-hover:grayscale-0 grayscale object-cover group-hover:scale-110 transition-transform duration-500 w-full h-full"
                         crossOrigin="anonymous"
                     />
+
+                    <GlareHover
+                        className="!size-full !border-none !absolute top-0 left-0"
+                        glareOpacity={0.3}
+                        glareAngle={-30}
+                        glareSize={300}
+                        transitionDuration={800}
+                        playOnce={false}
+                    />
                 </div>
 
                 <div className="mt-4 flex-1 flex flex-col">
@@ -64,14 +73,6 @@ const BlogCard = ({
 
                     <div className="w-full p-1 mt-4 text-xs text-white/30">{readtime} read time</div>
                 </div>
-                <GlareHover
-                    className="!size-full !border-none !absolute top-0 left-0"
-                    glareOpacity={0.3}
-                    glareAngle={-30}
-                    glareSize={300}
-                    transitionDuration={800}
-                    playOnce={false}
-                />
             </div>
         </div>
     );

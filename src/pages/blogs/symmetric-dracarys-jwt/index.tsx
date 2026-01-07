@@ -168,9 +168,32 @@ touch app\\Service\\Jwt\\JwtService.php`}
                     </p>
                     <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
                         <code className="language-php">
-{`public function parseToken($tokenString) { ... }
+{`public function parseToken($tokenString) { 
+    if (empty($tokenString)) {
+            throw new UnauthorizedException('Token string is empty');
+        }
+    try {
+        return $this->config()->parser()->parse($tokenString);
+    } catch (\\Throwable $e) {
+        throw new UnauthorizedException('Failed to parse token: ' . $e->getMessage());
+    }
+}
 
-public function validateToken($tokenString) { ... }`}
+public function validateToken($tokenString) { 
+    $parsedToken = $this->parseToken($tokenString);
+    
+    try {
+        $validator = $this->config()->validator($parsedToken)
+            ->permittedFor('https://example.com')
+            ->issuedBy('https://example.com')
+            ->signedWith($config->signer(), $config->verificationKey())
+            ->custom(fn($token) => $token->claims()->get('role') === 'tester')
+            ->relatedTo(1234567890)
+            ->assert();
+    } catch (\\Throwable $e) {
+        throw new AuthenticationException('Invalid or expired token');
+    } 
+}`}
                         </code>
                     </pre>
 
