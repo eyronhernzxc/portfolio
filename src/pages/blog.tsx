@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import PageLoading from "@/components/page-loading";
-import {HashLoader} from "react-spinners";
 
 const modules = import.meta.glob("./blogs/**/index.tsx");
 
@@ -24,7 +23,9 @@ const BlogPage = () => {
 
     return (
         <Suspense fallback={<PageLoading />}>
-            <BlogComponent />
+            <main className="z-50 relative">
+                <BlogComponent />
+            </main>
         </Suspense>
     );
 };

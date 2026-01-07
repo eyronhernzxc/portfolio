@@ -5,7 +5,7 @@
 html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply bg-neutral-950;
+    /*@apply gradient-4;*/
     /* background-color: #0f0f0f; */
     color: rgba(255, 255, 255, 0.87);
 }

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HomePage } from "./pages/home";
 import BlogPage from "@/pages/blog.tsx";
+import NotFound from "@/pages/not-found.tsx";
 
 const router = createBrowserRouter([
       {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     },
       {
         path: "*",
-        element: <>NOT FOUND</>,
+        Component: NotFound,
       },
 ]);
 
