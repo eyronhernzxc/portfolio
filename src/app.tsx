@@ -7,9 +7,6 @@ const App = () => {
         const lenis = new Lenis({
             duration: 3,
             easing: (t) => t,
-            smooth: true,
-            direction: "vertical",
-            gestureDirection: "vertical",
             lerp: 0.07,
             infinite: false,
         });
