@@ -108,7 +108,7 @@ const BlogSection = () => {
                 How to Build & Use My Projects
             </p>
 
-            <div className="mt-14 max-w-5xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-12 place-items-center px-6">
+            <div className="mt-14 max-w-5xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-12 place-items-center px-6">
                 {displayedBlogs
                     .slice()
                     .reverse()
