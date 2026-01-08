@@ -1,6 +1,5 @@
-import React from "react";
 
-import { forwardRef, useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -38,6 +37,7 @@ const useCardScale = (targetScale: any) => {
       );
     }, container);
 
+    ScrollTrigger.refresh();
     return () => ctx.revert();
   }, [targetScale]);
 
