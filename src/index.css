@@ -91,7 +91,7 @@ body {
 
         /* Force blur with !important to prevent overrides */
         backdrop-filter: blur(22px) saturate(140%) !important;
-        -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(140%);
 
         /* This creates a "Stacking Context" which is required for blur */
         isolation: isolate;
@@ -99,7 +99,7 @@ body {
         will-change: backdrop-filter;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
-        
+
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 1.5rem;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
