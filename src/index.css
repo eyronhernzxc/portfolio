@@ -4,6 +4,7 @@
     @custom-variant dark (&:is(.dark *));
 
     html {
+        color-scheme: dark;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         /*@apply gradient-4;*/
@@ -85,7 +86,7 @@
     }
 
     @utility glass-balanced {
-        background-color: rgba(9, 9, 11, 0.45);
+        background-color: rgba(9, 9, 11, 0.65);
         /* semi-transparent dark base */
         backdrop-filter: blur(22px) saturate(140%);
         -webkit-backdrop-filter: blur(22px) saturate(140%);
