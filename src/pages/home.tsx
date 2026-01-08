@@ -28,6 +28,8 @@ const HomePage = () => {
         { src: "/assets/py.svg", alt: "python icon" },
         { src: "/assets/redux.svg", alt: "redux icon" },
         { src: "/assets/tailwind.svg", alt: "tailwind icon" },
+        { src: "/assets/angular.svg", alt: "angular icon" },
+        { src: "/assets/nestjs.svg", alt: "nestjs icon" },
     ];
 
     // Loading screen
@@ -89,14 +91,14 @@ const HomePage = () => {
             <TopBar />
             <ScrollToTop />
 
-            <div className="fixed bottom-0 w-full z-10 pointer-events-none">
+            <div className="fixed bottom-0 w-full z-10 pointer-events-none max-h-[13rem] h-[10vh] ">
                 <GradualBlurMemo
                     target="parent"
                     position="bottom"
-                    height="10rem"
-                    strength={1}
+                    height="100%"
+                    strength={2}
                     divCount={3}
-                    curve="bezier"
+                    curve="linear"
                     exponential
                     opacity={1}
                 />
@@ -104,7 +106,7 @@ const HomePage = () => {
 
             <HeroSection />
 
-            <div className="relative max-w-5xl m-auto mb-35 -translate-y-20">
+            <div className="relative max-w-5xl m-auto mb-24 -translate-y-20">
                 <LogoLoop
                     logos={imageLogos}
                     speed={50}
@@ -127,6 +129,7 @@ const HomePage = () => {
             {showContactTip && (
                 <ContactComponent />
             )}
+
         </Fragment>
     );
 };

@@ -99,7 +99,7 @@ const BlogSection = () => {
     return (
         <div
             ref={containerRef}
-            className="blog-section w-full flex flex-col items-center relative mb-40 px-4 -translate-y-20"
+            className="blog-section w-full flex flex-col items-center relative mb-40 px-4"
         >
             <p className="text-center text-sm text-white/50 uppercase tracking-widest">
                 Guides & Tutorials
@@ -113,15 +113,14 @@ const BlogSection = () => {
                     .slice()
                     .reverse()
                     .map((blog, index) => (
-                        <div key={index} className="w-full md:w-72 max-w-sm blog-card">
-                            <BlogCard
-                                title={blog.title}
-                                desc={blog.desc}
-                                link={blog.link}
-                                img={blog.img}
-                                readtime={blog.readtime}
-                            />
-                        </div>
+                        <BlogCard
+                            key={index}
+                            title={blog.title}
+                            desc={blog.desc}
+                            link={blog.link}
+                            img={blog.img}
+                            readtime={blog.readtime}
+                        />
                     ))}
             </div>
 

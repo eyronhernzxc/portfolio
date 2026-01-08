@@ -406,6 +406,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                         {(item as any).node}
                     </span>
                 ) : (
+
                     <img
                         className={cx(
                             "h-[var(--logoloop-logoHeight)] w-auto block object-contain",

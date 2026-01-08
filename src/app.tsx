@@ -2,6 +2,7 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 import AppRouter from "@/routes.tsx";
 import Noise from "@/components/bg/noise";
+import SplashCursor from "@/components/splash";
 const App = () => {
     useEffect(() => {
         const lenis = new Lenis({
@@ -30,6 +31,18 @@ const App = () => {
                 overflow: "hidden",
             }}
         >
+
+            <SplashCursor
+                SIM_RESOLUTION={128}
+                DYE_RESOLUTION={1440}
+                DENSITY_DISSIPATION={3.5}
+                VELOCITY_DISSIPATION={2}
+                PRESSURE={0.1}
+                CURL={17}
+                SPLAT_RADIUS={0.2}
+                SPLAT_FORCE={6000}
+                COLOR_UPDATE_SPEED={10}
+            />
             <Noise
                 patternSize={250}
                 patternScaleX={1}

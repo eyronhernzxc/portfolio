@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ColorThief from "colorthief";
 import GlareHover from "@/components/glare-hover";
+import SpotlightCard from "@/components/card-spotlight";
 
 const BlogCard = ({
                       title = "Blog Post Title",
@@ -33,9 +34,9 @@ const BlogCard = ({
     }, []);
 
     return (
-        <div className="p-2.5 lg:p-0">
+            <div  className="p-2.5 lg:p-0">
             <div
-                className={`${gradientClass} relative border-2 border-white/10 w-full h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
+                className={`${gradientClass} relative border-2 border-white/10 w-full md:w-72 h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
                 onClick={() => window.open(link, "_blank")}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
@@ -43,7 +44,6 @@ const BlogCard = ({
                     boxShadow: isHovered ? `0 0 25px 10px ${shadowColor}` : undefined,
                 }}
             >
-
                 <div className="w-full h-40 rounded-xl overflow-hidden">
                     <img
                         ref={imgRef}
@@ -53,24 +53,15 @@ const BlogCard = ({
                         crossOrigin="anonymous"
                     />
 
-                    <GlareHover
-                        className="!size-full !border-none !absolute top-0 left-0"
-                        glareOpacity={0.3}
-                        glareAngle={-30}
-                        glareSize={300}
-                        transitionDuration={800}
-                        playOnce={false}
-                    />
                 </div>
 
                 <div className="mt-4 flex-1 flex flex-col">
                     <h1 className="text-white/30 text-xl transition-colors group-hover:text-white">
                         {title}
                     </h1>
-                    <p className="text-white/30 mt-2 text-sm transition-colors group-hover:text-white/70 flex-1">
+                    <p className="text-white/30 mt-2 text-sm transition-colors group-hover:text-white/70 flex-1 line-clamp-3">
                         {desc}
                     </p>
-
                     <div className="w-full p-1 mt-4 text-xs text-white/30">{readtime} read time</div>
                 </div>
             </div>

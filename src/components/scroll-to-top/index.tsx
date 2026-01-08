@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import GlassSurface from "@/components/glass-surface";
 
 const ScrollToTop = () => {
     const [visible, setVisible] = useState(false);
@@ -72,39 +73,44 @@ const ScrollToTop = () => {
             </span>
 
             {/* Scroll Button */}
-            <button
-                onClick={scrollToTop}
-                aria-label="Scroll to top"
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
+            <GlassSurface
                 className={`
-                    relative p-3 rounded-md bg-neutral-900/20  cursor-pointer text-white/50 shadow-lg
-                    transition-all duration-300 opacity-20 hover:opacity-100 flex items-center justify-center
-                    ${visible ? "pointer-events-auto" : "!opacity-0 pointer-events-none"}
+                        relative p-3 rounded-md bg-neutral-900/20  cursor-pointer text-white/50 shadow-lg
+                        transition-all duration-300 opacity-20 hover:opacity-100 flex items-center justify-center
+                        ${visible ? "pointer-events-auto" : "!opacity-0 pointer-events-none"}
                 `}
+                width={60}
+                height={60}
             >
-                {/*<svg fill="#ffffff" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xmlSpace="preserve" className="transition-all duration-300 ease-out opacity-50 hover:opacity-100">*/}
-                {/*    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>*/}
-                {/*    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>*/}
-                {/*    <g id="SVGRepo_iconCarrier"><g><g>*/}
-                {/*        <path d="M509.501,249.969L262.034,2.502c-3.337-3.336-8.73-3.336-12.066,0L2.501,249.969c-1.604,1.596-2.5,3.772-2.5,6.033 v247.467c0,3.447,2.082,6.562,5.265,7.885c3.191,1.314,6.852,0.589,9.301-1.852l241.434-241.434l241.434,241.434 c1.63,1.63,3.814,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.191-1.323,5.265-4.437,5.265-7.885V256.002 C512.001,253.741,511.105,251.565,509.501,249.969z">*/}
-                {/*        </path>*/}
-                {/*    </g></g> </g>*/}
-                {/*</svg>*/}
-                {/* Arrow */}
-                <svg
-                    fill="#ffffff"
-                    height="30px"
-                    width="30px"
-                    viewBox="0 0 511.996 511.996"
-                    className="transition-all duration-300 ease-out opacity-50 hover:opacity-100"
+                <button
+                    onClick={scrollToTop}
+                    aria-label="Scroll to top"
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    className="cursor-pointer"
                 >
-                    <g>
-                        <path d="M389.826,121.758l-128-119.467c-3.285-3.055-8.363-3.055-11.648,0l-128,119.467c-1.724,1.613-2.714,3.874-2.714,6.238 v136.533c0,3.448,2.082,6.562,5.274,7.885c3.191,1.323,6.852,0.589,9.293-1.852l121.967-121.967l121.967,121.967 c1.638,1.63,3.823,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.192-1.323,5.265-4.437,5.265-7.885V127.996 C392.531,125.632,391.55,123.371,389.826,121.758z"></path>
-                        <path d="M261.826,241.225c-3.285-3.055-8.363-3.055-11.648,0l-128,119.467c-1.724,1.613-2.714,3.874-2.714,6.238v136.533 c0,3.447,2.082,6.562,5.274,7.885c3.191,1.314,6.852,0.597,9.293-1.852l121.967-121.967l121.967,121.967 c1.638,1.63,3.823,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.192-1.323,5.265-4.437,5.265-7.885V366.929 c0-2.364-0.981-4.625-2.705-6.238L261.826,241.225z"></path>
-                    </g>
-                </svg>
-            </button>
+                    {/*<svg fill="#ffffff" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xmlSpace="preserve" className="transition-all duration-300 ease-out opacity-50 hover:opacity-100">*/}
+                    {/*    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>*/}
+                    {/*    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>*/}
+                    {/*    <g id="SVGRepo_iconCarrier"><g><g>*/}
+                    {/*        <path d="M509.501,249.969L262.034,2.502c-3.337-3.336-8.73-3.336-12.066,0L2.501,249.969c-1.604,1.596-2.5,3.772-2.5,6.033 v247.467c0,3.447,2.082,6.562,5.265,7.885c3.191,1.314,6.852,0.589,9.301-1.852l241.434-241.434l241.434,241.434 c1.63,1.63,3.814,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.191-1.323,5.265-4.437,5.265-7.885V256.002 C512.001,253.741,511.105,251.565,509.501,249.969z">*/}
+                    {/*        </path>*/}
+                    {/*    </g></g> </g>*/}
+                    {/*</svg>*/}
+                    {/* Arrow */}
+                    <svg
+                        fill="#ffffff"
+                        height="30px"
+                        width="30px"
+                        viewBox="0 0 511.996 511.996"
+                    >
+                        <g>
+                            <path d="M389.826,121.758l-128-119.467c-3.285-3.055-8.363-3.055-11.648,0l-128,119.467c-1.724,1.613-2.714,3.874-2.714,6.238 v136.533c0,3.448,2.082,6.562,5.274,7.885c3.191,1.323,6.852,0.589,9.293-1.852l121.967-121.967l121.967,121.967 c1.638,1.63,3.823,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.192-1.323,5.265-4.437,5.265-7.885V127.996 C392.531,125.632,391.55,123.371,389.826,121.758z"></path>
+                            <path d="M261.826,241.225c-3.285-3.055-8.363-3.055-11.648,0l-128,119.467c-1.724,1.613-2.714,3.874-2.714,6.238v136.533 c0,3.447,2.082,6.562,5.274,7.885c3.191,1.314,6.852,0.597,9.293-1.852l121.967-121.967l121.967,121.967 c1.638,1.63,3.823,2.5,6.033,2.5c1.101,0,2.21-0.213,3.268-0.648c3.192-1.323,5.265-4.437,5.265-7.885V366.929 c0-2.364-0.981-4.625-2.705-6.238L261.826,241.225z"></path>
+                        </g>
+                    </svg>
+                </button>
+            </GlassSurface>
         </div>
     );
 };
