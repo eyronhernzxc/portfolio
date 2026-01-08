@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import AppRouter from "@/routes.tsx";
 import Noise from "@/components/bg/noise";
 import SplashCursor from "@/components/splash";
+import ScrollToTop from "@/components/scroll-to-top";
+import GradualBlurMemo from "@/components/gradual-blur";
 const App = () => {
     useEffect(() => {
         const lenis = new Lenis({
@@ -52,6 +54,20 @@ const App = () => {
             />
         </div>
         <AppRouter />
+
+        <ScrollToTop />
+        <div className="fixed bottom-0 w-full z-20 pointer-events-none max-h-[20rem] h-[13vh] ">
+            <GradualBlurMemo
+                target="parent"
+                position="bottom"
+                height="100%"
+                strength={2}
+                divCount={5}
+                curve="linear"
+                exponential
+                opacity={1}
+            />
+        </div>
     </>;
 };
 

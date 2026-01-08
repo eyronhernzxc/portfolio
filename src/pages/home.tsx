@@ -1,13 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { LightRaysBackground } from "@/components/bg/light-rays";
 import Noise from "@/components/bg/noise";
-import GradualBlurMemo from "@/components/gradual-blur";
 import LogoLoop from "@/components/loop-icon";
 import { TopBar } from "@/components/navigation/top-bar";
 import { BlogSection } from "@/sections/blog";
 import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
-import ScrollToTop from "@/components/scroll-to-top";
 import CountUp from "@/components/count";
 import ContactComponent from "@/components/contact-component";
 const HomePage = () => {
@@ -89,25 +87,20 @@ const HomePage = () => {
             {/* Backgrounds */}
             <LightRaysBackground />
             <TopBar />
-            <ScrollToTop />
-
-            <div className="fixed bottom-0 w-full z-10 pointer-events-none max-h-[13rem] h-[10vh] ">
-                <GradualBlurMemo
-                    target="parent"
-                    position="bottom"
-                    height="100%"
-                    strength={2}
-                    divCount={3}
-                    curve="linear"
-                    exponential
-                    opacity={1}
-                />
-            </div>
 
             <HeroSection />
 
-            <div className="relative max-w-5xl m-auto mb-24 -translate-y-20">
-                <LogoLoop
+            <div
+                className="relative w-[90%] md:max-w-5xl m-auto mb-24 -translate-y-20 overflow-hidden"
+                style={{
+                    maskImage:
+                        "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                    WebkitMaskImage:
+                        "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
+                }}
+            >
+
+            <LogoLoop
                     logos={imageLogos}
                     speed={50}
                     direction="left"
@@ -118,7 +111,7 @@ const HomePage = () => {
                     fadeOut={false}
                     fadeOutColor="rgba(11,42,58,0.6)"
                     ariaLabel="Tech Stack"
-                    className="cursor-pointer"
+                    className="cursor-pointer "
                 />
             </div>
 

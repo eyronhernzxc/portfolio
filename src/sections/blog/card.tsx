@@ -1,7 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import ColorThief from "colorthief";
-import GlareHover from "@/components/glare-hover";
-import SpotlightCard from "@/components/card-spotlight";
 
 const BlogCard = ({
                       title = "Blog Post Title",
@@ -11,9 +8,7 @@ const BlogCard = ({
                       readtime = "1m",
                   }: any) => {
     const imgRef = useRef<HTMLImageElement>(null);
-    const [shadowColor, setShadowColor] = useState("rgba(0,0,0,0.5)");
     const [gradientClass, setGradientClass] = useState("gradient-1");
-    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         const gradients = ["gradient-1", "gradient-2", "gradient-3", "gradient-4"];
@@ -22,27 +17,13 @@ const BlogCard = ({
         setGradientClass(randomGradient);
     }, []);
 
-    useEffect(() => {
-        const imgEl = imgRef.current;
-        if (!imgEl) return;
-
-        imgEl.onload = () => {
-            const colorThief = new ColorThief();
-            const result = colorThief.getColor(imgEl); // [r, g, b]
-            setShadowColor(`rgba(${result[0]}, ${result[1]}, ${result[2]}, 0.5)`);
-        };
-    }, []);
 
     return (
             <div  className="p-2.5 lg:p-0">
             <div
-                className={`${gradientClass} relative border-2 border-white/10 w-full md:w-72 h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
+                className={`${gradientClass} overflow-hidden glass-balanced relative border-2 border-white/10 w-full md:w-72 h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
                 onClick={() => window.open(link, "_blank")}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                style={{
-                    boxShadow: isHovered ? `0 0 25px 10px ${shadowColor}` : undefined,
-                }}
+
             >
                 <div className="w-full h-40 rounded-xl overflow-hidden">
                     <img

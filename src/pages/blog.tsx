@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import PageLoading from "@/components/page-loading";
+import NotFound from "@/pages/not-found.tsx";
 
 const modules = import.meta.glob("./blogs/**/index.tsx");
 
@@ -12,7 +13,7 @@ const BlogPage = () => {
     const importer = modules[key];
 
     if (!importer) {
-        return <div>Blog not found</div>;
+        return <NotFound />;
     }
 
     const BlogComponent = lazy(() =>

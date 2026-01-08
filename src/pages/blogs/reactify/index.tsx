@@ -66,17 +66,17 @@ const InfyHowToUse = () => {
                         <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2">Installation</h2>
 
                         <p className="text-gray-400 text-sm sm:text-base">Global installation (via npm):</p>
-                        <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`npm install -g infy-react-cli`}
                         </pre>
 
                         <p className="text-gray-400 text-sm sm:text-base">Or via yarn:</p>
-                        <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`yarn global add infy-react-cli`}
                         </pre>
 
                         <p className="text-gray-400 text-sm sm:text-base">Local installation (recommended for teams):</p>
-                        <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`npm install infy-react-cli --save-dev
 npx infy g component Button`}
                         </pre>

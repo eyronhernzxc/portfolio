@@ -39,12 +39,12 @@ const JWTParserUsage = () => {
                 <div className="space-y-4">
                     <h2 className="text-xl sm:text-2xl font-semibold text-white">Installation</h2>
                     <p className="text-gray-400 text-sm sm:text-base">Install via npm:</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`npm i jsonwebtoken-parser`}
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Importing</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`import { Jwt } from "jsonwebtoken-parser";`}
                     </pre>
                 </div>
@@ -52,7 +52,7 @@ const JWTParserUsage = () => {
                 {/* Usage */}
                 <div className="space-y-4">
                     <h2 className="text-xl sm:text-2xl font-semibold text-white">Basic Usage</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 
 {`const tokenString = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ...";
@@ -65,7 +65,7 @@ const jwt = new Jwt(tokenString);`}
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Accessing Headers & Claims</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`const sub = claims.get('sub');
 const typ = headers.get('typ');
@@ -74,7 +74,7 @@ const hasExp = claims.has('exp');`}
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Validating JWT Claims</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`const isExpired = validate.isExpired();
 const isRelatedTo = validate.isRelatedTo(sub);
@@ -83,12 +83,12 @@ const hasBeenIssuedBy = validate.hasBeenIssuedBy('https://example.com');`}
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Accessing Signature</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`console.log("Signature (hex):", signature);`}
                     </pre>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Full Decoded Object</h2>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`console.log("Full decoded object:", parsed);`}
                     </pre>
 

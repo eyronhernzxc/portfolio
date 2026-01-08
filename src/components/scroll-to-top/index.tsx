@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import GlassSurface from "@/components/glass-surface";
 
 const ScrollToTop = () => {
     const [visible, setVisible] = useState(false);
@@ -59,13 +58,13 @@ const ScrollToTop = () => {
     const labelVisible = showLabel || (!isTouchDevice && hovered);
 
     return (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center justify-end ">
+        <div className="fixed bottom-8 right-4 z-40 flex flex-col items-center justify-end ">
 
         {/* Label */}
             <span
                 className={`
-                    mb-2 px-3 py-1 rounded-full backdrop-blur-md bg-neutral-900/50 border border-white/10 text-white/50 text-sm
-                    transition-all duration-300
+                    mb-2 px-3 py-1 rounded-full glass-balanced gradient-1 text-white/50 text-xs
+                    transition-all duration-300 overflow-hidden
                     ${labelVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}
                 `}
             >
@@ -73,22 +72,18 @@ const ScrollToTop = () => {
             </span>
 
             {/* Scroll Button */}
-            <GlassSurface
+            <button
                 className={`
-                        relative p-3 rounded-md bg-neutral-900/20  cursor-pointer text-white/50 shadow-lg
-                        transition-all duration-300 opacity-20 hover:opacity-100 flex items-center justify-center
+                        relative p-3 !rounded-full cursor-pointer text-white/50 shadow-lg
+                        transition-all duration-300  flex items-center justify-center
+                        !size-11 glass-balanced gradient-2 overflow-hidden
                         ${visible ? "pointer-events-auto" : "!opacity-0 pointer-events-none"}
                 `}
-                width={60}
-                height={60}
+                onClick={scrollToTop}
+                aria-label="Scroll to top"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
             >
-                <button
-                    onClick={scrollToTop}
-                    aria-label="Scroll to top"
-                    onMouseEnter={() => setHovered(true)}
-                    onMouseLeave={() => setHovered(false)}
-                    className="cursor-pointer"
-                >
                     {/*<svg fill="#ffffff" height="15px" width="15px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xmlSpace="preserve" className="transition-all duration-300 ease-out opacity-50 hover:opacity-100">*/}
                     {/*    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>*/}
                     {/*    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>*/}
@@ -100,8 +95,8 @@ const ScrollToTop = () => {
                     {/* Arrow */}
                     <svg
                         fill="#ffffff"
-                        height="30px"
-                        width="30px"
+                        height="20px"
+                        width="20px"
                         viewBox="0 0 511.996 511.996"
                     >
                         <g>
@@ -110,7 +105,6 @@ const ScrollToTop = () => {
                         </g>
                     </svg>
                 </button>
-            </GlassSurface>
         </div>
     );
 };

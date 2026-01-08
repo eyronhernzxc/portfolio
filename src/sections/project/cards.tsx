@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import ColorThief from "colorthief";
+import { useRef } from "react";
 import useCardScale from "./hooks";
 import GlareHover from "@/components/glare-hover";
 
@@ -7,23 +6,6 @@ const Card = ({ title, description, src, url, i, color, targetScale }: any) => {
     const { imageRef, cardRef, container } = useCardScale(targetScale);
 
     const imgRef = useRef<HTMLImageElement>(null);
-    const [shadowColor, setShadowColor] = useState("rgba(0,0,0,0.5)");
-    const [isHovered, setIsHovered] = useState(false);
-
-    useEffect(() => {
-        const imgEl = imgRef.current;
-        if (!imgEl) return;
-
-        imgEl.onload = () => {
-            try {
-                const colorThief = new ColorThief();
-                const [r, g, b] = colorThief.getColor(imgEl);
-                setShadowColor(`rgba(${r}, ${g}, ${b}, 0.45)`);
-            } catch (e) {
-                console.warn("ColorThief failed:", e);
-            }
-        };
-    }, []);
 
     return (
         <div
@@ -33,15 +15,10 @@ const Card = ({ title, description, src, url, i, color, targetScale }: any) => {
 
             <div
                 ref={cardRef}
-                className={`transition-colors duration-200 flex flex-col relative md:h-[500px] w-[1000px] p-[50px] origin-top border-2 border-white/10 rounded-3xl overflow-hidden ${color}`}
+                className={`glass-balanced transition-colors duration-200 flex flex-col relative md:h-[500px] w-[1000px] p-[50px] origin-top border-2 border-white/10 rounded-3xl overflow-hidden ${color}`}
                 style={{
                     top: `calc(-5vh + ${i * 40}px)`,
-                    boxShadow: isHovered
-                        ? `0 0 40px 5px ${shadowColor}`
-                        : undefined,
                 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
             >
 
                 <div className="flex h-full md:mt-[50px] gap-[50px] flex-col md:flex-row">
@@ -61,14 +38,14 @@ const Card = ({ title, description, src, url, i, color, targetScale }: any) => {
                             href={url}
                             target="_blank"
                             rel="noreferrer"
-                            className="hidden md:block absolute bottom-0 left-0 transition-colors hover:bg-white/10 border-2 border-white/10 rounded-full py-3 px-6"
+                            className="hidden md:block overflow-hidden text-sm !absolute bottom-0 left-0 transition-colors glass-balanced py-3 px-6"
                         >
                             {url === "#" ? "See More" : "Live Preview"}
                         </a>
                     </div>
 
                     {/* Image Section */}
-                    <div className="group relative w-full grow md:w-[60%] h-full rounded-3xl overflow-hidden bg-neutral-950 border-2 border-white/20">
+                    <div className="group relative w-full grow md:w-[60%] h-full rounded-3xl overflow-hidden glass-balanced gradient-1 border-2 border-white/20">
                         <div className="w-full h-full" ref={imageRef}>
                             <img
                                 ref={imgRef}

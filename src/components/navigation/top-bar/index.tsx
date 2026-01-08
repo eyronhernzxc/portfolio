@@ -18,8 +18,8 @@ const TopBar = () => {
             <nav
                 className={`
                     size-full flex items-center gap-2 rounded-2xl px-5
-                    transition-all duration-300
-                    ${scrolled ? "backdrop-blur-md bg-neutral-900/90 border border-white/10" : "bg-transparent border border-transparent"}
+                    transition-all duration-300 overflow-hidden
+                    ${scrolled ? "glass-balanced gradient-1 border border-white/10" : "bg-transparent border border-transparent"}
                 `}
             >
                 <span className="uppercase font-black text-white/30 tracking-wider grow text-sm sm:text-base">
@@ -28,7 +28,7 @@ const TopBar = () => {
                 {Icons.map(({ icon: Icon, link }, index) => (
                     <button
                         key={index}
-                        className="group cursor-pointer rounded-lg p-2.5 hover:bg-neutral-900 transition-colors"
+                        className="group cursor-pointer rounded-lg p-2.5 hover:glass-balanced hover:gradient-1 transition-colors"
                         onClick={() => window.open(link, "_blank")}
                     >
                         <Icon

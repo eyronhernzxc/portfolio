@@ -54,7 +54,7 @@ const PHPMVCFrameworkTutorial = () => {
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Project Structure</h2>
                     <p>Let's start by setting up our project structure. Create a new directory for your project and organize it like this:</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`php-mvc-framework/
 ├── composer.json
@@ -88,7 +88,7 @@ const PHPMVCFrameworkTutorial = () => {
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 1: Setting Up Composer and Autoloading</h2>
                     <p>First, let's create our <code>composer.json</code> file to handle autoloading and dependencies:</p>
                     <p>Run <code>composer install</code> to generate the autoloader.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`{
     "name": "your-name/php-mvc-framework",
@@ -114,7 +114,7 @@ const PHPMVCFrameworkTutorial = () => {
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 2: Configuration File</h2>
                     <p>Create <code>config.php</code> to store our application constants.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 
@@ -136,7 +136,7 @@ define('DB_NAME', 'my_database');`}
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 3: Core Classes</h2>
                     <p><strong>Request Class:</strong> The Request class wraps PHP's superglobals and provides a clean interface for accessing request data.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 
@@ -186,7 +186,7 @@ class Request
                     </pre>
 
                     <p><strong>Router Class:</strong> The Router handles URL routing with support for parameters and dependency injection.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 
@@ -259,7 +259,7 @@ class Router
                     </pre>
 
                     <p><strong>Base Controller and Model Classes:</strong></p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 namespace Core;
@@ -289,7 +289,7 @@ abstract class Model
                     </pre>
 
                     <p><strong>Helper Functions:</strong> Create <code>Helpers.php</code> with utility functions.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 
@@ -314,7 +314,7 @@ if(!function_exists('view')){
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 4: Application Entry Point</h2>
                     <p>Create <code>index.php</code> as the main entry point.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 
@@ -327,7 +327,7 @@ $router = require '../src/Routes/index.php';`}
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 5: Routes Configuration</h2>
                     <p>Define your routes in <code>index.php</code>.</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 use App\\Controllers\\HomePageController;
@@ -344,7 +344,7 @@ $router->dispatch();`}
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 6: Creating Controllers and Models</h2>
                     <p><strong>HomePageController:</strong></p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 namespace App\\Controllers;
@@ -381,7 +381,7 @@ class HomePageController extends Controller
                     </pre>
 
                     <p><strong>Journal Model:</strong></p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 namespace App\\Models;
@@ -397,7 +397,7 @@ class Journal extends Model
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 7: Views</h2>
                     <p>Create a simple view in <code>index.php</code>:</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 <!DOCTYPE html>
@@ -416,7 +416,7 @@ class Journal extends Model
                     </pre>
 
                     <p>And a 404 view in <code>notfound.php</code>:</p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 text-xs sm:text-sm overflow-x-auto whitespace-pre">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code>
 {`<?php
 <!DOCTYPE html>

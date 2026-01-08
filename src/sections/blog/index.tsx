@@ -52,7 +52,7 @@ const BlogSection = () => {
             blogList.sort((a, b) => a.title.localeCompare(b.title));
             setBlogs(blogList);
 
-            setDisplayCount(isMobile ? 3 : 5);
+            setDisplayCount(isMobile ? 3 : 4);
         };
 
         loadBlogs();
@@ -126,7 +126,12 @@ const BlogSection = () => {
 
             {displayCount < blogs.length && (
                 <button
-                    className="mt-8 px-6 py-3 bg-neutral-800 text-white rounded-lg transition hover:bg-neutral-700 cursor-pointer"
+                    className={`
+                        mt-8
+                        relative p-3  cursor-pointer text-white/50 shadow-lg
+                        transition-all duration-300  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
+                        !w-32 !h-10 text-sm
+                `}
                     onClick={handleSeeMore}
                 >
                     See More

@@ -57,7 +57,7 @@ const DracarysJWTLaravel = () => {
                     <p className="text-gray-400 text-sm sm:text-base">
                         To integrate Dracarys JWT into your Laravel 11 project, you first need to install it using Composer:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         {`composer require dracarys/jwt`}
                     </pre>
                     <p className="text-gray-400 text-sm sm:text-base">
@@ -73,13 +73,13 @@ const DracarysJWTLaravel = () => {
                         Every JWT requires a secret key to sign tokens securely. Dracarys JWT provides a simple way to generate and manage this key.
                         Start by creating a custom Artisan command:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         {`php artisan make:command GenerateJwtKeyCommand`}
                     </pre>
                     <p className="text-gray-400 text-sm sm:text-base">
                         This will create a new command file in <code className="text-white">app/Console/Commands/</code>. Define the command's **signature** and **description**:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`protected $signature = 'jwt:secret';
 protected $description = 'Generate a JWT secret and save it to the .env file.';`}
@@ -88,7 +88,7 @@ protected $description = 'Generate a JWT secret and save it to the .env file.';`
                     <p className="text-gray-400 text-sm sm:text-base mt-2">
                         Implement the <code className="text-white">handle</code> method to generate a strong, random key and save it automatically to your <code className="text-white">.env</code> file:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`public function handle(): void
 {
@@ -124,7 +124,7 @@ protected $description = 'Generate a JWT secret and save it to the .env file.';`
                     <p className="text-gray-400 text-sm sm:text-base">
                         To centralize JWT operations, create a dedicated Service class. First, create the directory and service file:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`# Create directory
 mkdir app\\Service\\Jwt
@@ -136,7 +136,7 @@ touch app\\Service\\Jwt\\JwtService.php`}
                     <p className="text-gray-400 text-sm sm:text-base">
                         In <code className="text-white">JwtService.php</code>, configure the symmetric encryption using SHA256:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`public function config()
 {
@@ -148,7 +148,7 @@ touch app\\Service\\Jwt\\JwtService.php`}
                     <p className="text-gray-400 text-sm sm:text-base">
                         Add a method to create tokens with claims such as `aud`, `iss`, `sub`, and `iat`:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`public function createToken()
 {
@@ -166,7 +166,7 @@ touch app\\Service\\Jwt\\JwtService.php`}
                     <p className="text-gray-400 text-sm sm:text-base">
                         Include methods to parse and validate JWTs, ensuring tokens are authentic and have not been tampered with:
                     </p>
-                    <pre className="bg-neutral-900 text-white p-3 sm:p-4 rounded my-2 overflow-x-auto text-xs sm:text-sm">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
                         <code className="language-php">
 {`public function parseToken($tokenString) { 
     if (empty($tokenString)) {

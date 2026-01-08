@@ -8,7 +8,7 @@ const CustomExpressFramework = () => {
                 <img
                     src={data.img}
                     alt={data.title}
-                    className="w-full max-w-3xl h-72 md:h-96 object-cover rounded-lg shadow-lg"
+                    className="w-full max-w-3xl h-72 md:h-96 object-cover !rounded-xl-lg shadow-lg"
                 />
             </header>
 
@@ -61,7 +61,7 @@ const CustomExpressFramework = () => {
 
                     <h3 className="text-xl font-semibold text-white">Installation</h3>
 
-                    <pre className="bg-neutral-900 p-4 rounded text-sm overflow-x-auto">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`git clone <repository-url>
 cd express-framework-main
 npm install
@@ -90,7 +90,7 @@ npm run dev`}
                         Creating a Controller
                     </h2>
 
-                    <pre className="bg-neutral-900 p-4 rounded text-sm overflow-x-auto">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`@Controller('/users')
 export class UserController {
 
@@ -117,7 +117,7 @@ export class UserController {
                         Request Validation
                     </h2>
 
-                    <pre className="bg-neutral-900 p-4 rounded text-sm overflow-x-auto">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`export const CreateUserSchema = [
     body('username').notEmpty(),
     body('email').isEmail(),
@@ -137,7 +137,7 @@ export class UserController {
                         Implementing Services
                     </h2>
 
-                    <pre className="bg-neutral-900 p-4 rounded text-sm overflow-x-auto">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`@Injectable()
 export class UserServices {
     private users = [];
@@ -166,7 +166,7 @@ export class UserServices {
                         API responses.
                     </p>
 
-                    <pre className="bg-neutral-900 p-4 rounded text-sm overflow-x-auto">
+                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
 {`export const errorHandler = (err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,
