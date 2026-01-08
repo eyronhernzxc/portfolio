@@ -5,17 +5,20 @@ import Noise from "@/components/bg/noise";
 import SplashCursor from "@/components/splash";
 import ScrollToTop from "@/components/scroll-to-top";
 import GradualBlurMemo from "@/components/gradual-blur";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 const App = () => {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 2.2,
-            lerp: 0.05,
+            duration: 2.2, // Slightly faster duration feels more responsive
+            lerp: 0.05,     // Lower lerp = smoother/heavier glide (0.05-0.08 is the sweet spot)
+            // This easing function makes the scroll "drift" to a stop
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1, // Increase to 1.2 if you want it to travel further per scroll
+            touchMultiplier: 2,
+            infinite: false,
         });
-    
-        // THIS IS THE MISSING LINK
-        lenis.on('scroll', ScrollTrigger.update);
     
         const raf = (time: number) => {
             lenis.raf(time);
@@ -23,14 +26,11 @@ const App = () => {
         };
         requestAnimationFrame(raf);
     
-        // Optional but recommended: Tell GSAP to use Lenis for proxying
-        // ScrollTrigger.scrollerProxy(document.body, { scrollTop: lenis.scroll });
-    
-        return () => {
-            lenis.destroy();
-            lenis.off('scroll', ScrollTrigger.update);
-        };
+        return () => lenis.destroy();
     }, []);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [])
     return <>
 
         <div
