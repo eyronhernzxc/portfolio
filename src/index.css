@@ -85,36 +85,30 @@ body {
         border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .glass-balanced {
-        transform: translateZ(0); 
-        backface-visibility: hidden;
-        perspective: 1000px;
-        background-color: rgba(9, 9, 11, 0.40);
-        /* semi-transparent dark base */
-        backdrop-filter: blur(22px) saturate(140%);
-        -webkit-backdrop-filter: blur(22px) saturate(140%);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        /* soft border */
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.05),
-            /* subtle inner highlight */
-            0 20px 40px rgba(0, 0, 0, 0.35);
-        /* soft outer shadow */
-        border-radius: 1.5rem;
-        /* rounded corners for modern look */
-        /*overflow: hidden;*/
+    @utility glass-balanced {
         position: relative;
-    }
-
-    /* Optional: subtle frosted overlay for highlights */
-    .glass-balanced::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.08),
-                rgba(255, 255, 255, 0.02) 50%,
-                rgba(255, 255, 255, 0.0) 100%);
-        pointer-events: none;
+        background-color: rgba(9, 9, 11, 0.6); /* Reduced from 0.9 for better blur visibility */
+        
+        /* The Blur */
+        backdrop-filter: blur(20px) saturate(150%);
+        -webkit-backdrop-filter: blur(20px) saturate(150%);
+        
+        /* Production Rendering Fixes */
+        transform: translateZ(0);
+        isolation: isolate;
+        
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            border-radius: inherit; /* Matches the parent corner radius */
+            pointer-events: none;
+        }
     }
 }
