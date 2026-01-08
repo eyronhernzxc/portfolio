@@ -31,6 +31,24 @@ const App = () => {
                 height: "100vh",
                 position: "fixed",
                 overflow: "hidden",
+                zIndex: '999999',
+                pointerEvents: "none",
+            }}
+        >
+            <Noise
+                patternSize={250}
+                patternScaleX={1}
+                patternScaleY={1}
+                patternRefreshInterval={2}
+                patternAlpha={10}
+            />
+        </div>
+        <div
+            style={{
+                width: "100%",
+                height: "100vh",
+                position: "fixed",
+                overflow: "hidden",
             }}
         >
 
@@ -44,13 +62,6 @@ const App = () => {
                 SPLAT_RADIUS={0.2}
                 SPLAT_FORCE={6000}
                 COLOR_UPDATE_SPEED={10}
-            />
-            <Noise
-                patternSize={250}
-                patternScaleX={1}
-                patternScaleY={1}
-                patternRefreshInterval={2}
-                patternAlpha={15}
             />
         </div>
         <AppRouter />

@@ -46,6 +46,7 @@ const BlogCard = ({
                     <div className="w-full p-1 mt-4 text-xs text-white/30">{readtime} read time</div>
                 </div>
             </div>
+
         </div>
     );
 };
