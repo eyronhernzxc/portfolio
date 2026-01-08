@@ -101,16 +101,14 @@
         /* rounded corners for modern look */
         /*overflow: hidden;*/
         position: relative;
-    }
-
-    /* Optional: subtle frosted overlay for highlights */
-    @utility glass-balanced::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg,
-                rgba(255, 255, 255, 0.08),
-                rgba(255, 255, 255, 0.02) 50%,
-                rgba(255, 255, 255, 0.0) 100%);
-        pointer-events: none;
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.08),
+                    rgba(255, 255, 255, 0.02) 50%,
+                    rgba(255, 255, 255, 0.0) 100%);
+            pointer-events: none;
+        }
     }
