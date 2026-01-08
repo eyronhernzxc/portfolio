@@ -85,7 +85,7 @@ body {
         border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    @utility glass-balanced {
+    .glass-balanced {
         position: relative;
         background-color: rgba(9, 9, 11, 0.6); /* Reduced from 0.9 for better blur visibility */
         
