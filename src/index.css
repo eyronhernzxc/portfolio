@@ -1,118 +1,115 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@source inline("gradient-1");
-@source inline("gradient-2");
-@source inline("gradient-3");
-@source inline("gradient-4");
+    @import "tailwindcss";
+    @import "tw-animate-css";
 
-@source inline("glass");
-@source inline("glass-premium");
-@source inline("glass-balanced");
+    @custom-variant dark (&:is(.dark *));
 
-@custom-variant dark (&:is(.dark *));
-html {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /*@apply gradient-4;*/
-    /* background-color: #0f0f0f; */
-    color: rgba(255, 255, 255, 0.87);
-}
-body {
-    @apply font-inter;
-}
-@theme {
-    --font-inter: "Inter", sans-serif;
-    --font-anton: "Anton", sans-serif;
-}
+    html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        /*@apply gradient-4;*/
+        /* background-color: #0f0f0f; */
+        color: rgba(255, 255, 255, 0.87);
+    }
+
+    body {
+        @apply font-inter;
+    }
+
+    @theme {
+        --font-inter: "Inter", sans-serif;
+        --font-anton: "Anton", sans-serif;
+    }
 
 
-.gradient-1 {
-  background-color: #09090b;
-  background-image: 
-    radial-gradient(at 28% 4%, rgba(25,25,25,0.8) 0%, transparent 43%),
-    radial-gradient(at 60% 19%, rgba(30,30,30,0.7) 0%, transparent 53%),
-    radial-gradient(at 66% 68%, rgba(20,20,20,0.6) 0%, transparent 58%),
-    radial-gradient(at 92% 36%, rgba(35,35,35,0.5) 0%, transparent 90%),
-    radial-gradient(at 80% 66%, rgba(15,15,15,0.5) 0%, transparent 32%),
-    radial-gradient(at 97% 100%, rgba(25,25,25,0.6) 0%, transparent 58%);
-}
+    @utility gradient-1 {
+        background-color: #09090b;
+        background-image:
+            radial-gradient(at 28% 4%, rgba(25, 25, 25, 0.8) 0%, transparent 43%),
+            radial-gradient(at 60% 19%, rgba(30, 30, 30, 0.7) 0%, transparent 53%),
+            radial-gradient(at 66% 68%, rgba(20, 20, 20, 0.6) 0%, transparent 58%),
+            radial-gradient(at 92% 36%, rgba(35, 35, 35, 0.5) 0%, transparent 90%),
+            radial-gradient(at 80% 66%, rgba(15, 15, 15, 0.5) 0%, transparent 32%),
+            radial-gradient(at 97% 100%, rgba(25, 25, 25, 0.6) 0%, transparent 58%);
+    }
 
-.gradient-2 {
-  background-color: #09090b;
-  background-image: 
-    radial-gradient(at 17% 98%, rgba(20,20,20,0.7) 0%, transparent 31%),
-    radial-gradient(at 85% 54%, rgba(15,15,15,0.6) 0%, transparent 36%),
-    radial-gradient(at 29% 80%, rgba(25,25,25,0.6) 0%, transparent 93%),
-    radial-gradient(at 51% 61%, rgba(18,18,18,0.5) 0%, transparent 64%),
-    radial-gradient(at 49% 21%, rgba(28,28,28,0.7) 0%, transparent 2%),
-    radial-gradient(at 69% 25%, rgba(22,22,22,0.6) 0%, transparent 75%);
-}
+    @utility gradient-2 {
+        background-color: #09090b;
+        background-image:
+            radial-gradient(at 17% 98%, rgba(20, 20, 20, 0.7) 0%, transparent 31%),
+            radial-gradient(at 85% 54%, rgba(15, 15, 15, 0.6) 0%, transparent 36%),
+            radial-gradient(at 29% 80%, rgba(25, 25, 25, 0.6) 0%, transparent 93%),
+            radial-gradient(at 51% 61%, rgba(18, 18, 18, 0.5) 0%, transparent 64%),
+            radial-gradient(at 49% 21%, rgba(28, 28, 28, 0.7) 0%, transparent 2%),
+            radial-gradient(at 69% 25%, rgba(22, 22, 22, 0.6) 0%, transparent 75%);
+    }
 
-.gradient-3 {
-  background-color: #09090b;
-  background-image: 
-    radial-gradient(at 61% 1%, rgba(25,25,25,0.8) 0%, transparent 98%),
-    radial-gradient(at 29% 42%, rgba(18,18,18,0.6) 0%, transparent 84%),
-    radial-gradient(at 20% 35%, rgba(28,28,28,0.5) 0%, transparent 12%),
-    radial-gradient(at 53% 8%, rgba(15,15,15,0.5) 0%, transparent 19%),
-    radial-gradient(at 77% 87%, rgba(22,22,22,0.6) 0%, transparent 56%),
-    radial-gradient(at 25% 83%, rgba(25,25,25,0.6) 0%, transparent 61%);
-}
+    @utility gradient-3 {
+        background-color: #09090b;
+        background-image:
+            radial-gradient(at 61% 1%, rgba(25, 25, 25, 0.8) 0%, transparent 98%),
+            radial-gradient(at 29% 42%, rgba(18, 18, 18, 0.6) 0%, transparent 84%),
+            radial-gradient(at 20% 35%, rgba(28, 28, 28, 0.5) 0%, transparent 12%),
+            radial-gradient(at 53% 8%, rgba(15, 15, 15, 0.5) 0%, transparent 19%),
+            radial-gradient(at 77% 87%, rgba(22, 22, 22, 0.6) 0%, transparent 56%),
+            radial-gradient(at 25% 83%, rgba(25, 25, 25, 0.6) 0%, transparent 61%);
+    }
 
-.gradient-4 {
-  background-color: #09090b;
-  background-image: 
-    radial-gradient(at 33% 54%, rgba(25,25,25,0.6) 0%, transparent 5%),
-    radial-gradient(at 89% 88%, rgba(18,18,18,0.5) 0%, transparent 50%),
-    radial-gradient(at 86% 52%, rgba(28,28,28,0.6) 0%, transparent 10%),
-    radial-gradient(at 90% 45%, rgba(22,22,22,0.5) 0%, transparent 16%),
-    radial-gradient(at 53% 54%, rgba(15,15,15,0.4) 0%, transparent 25%),
-    radial-gradient(at 17% 10%, rgba(22,22,22,0.5) 0%, transparent 47%);
-}
-.glass {
-    background-color: rgba(9, 9, 11, 0.55);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow:
+    @utility gradient-4 {
+        background-color: #09090b;
+        background-image:
+            radial-gradient(at 33% 54%, rgba(25, 25, 25, 0.6) 0%, transparent 5%),
+            radial-gradient(at 89% 88%, rgba(18, 18, 18, 0.5) 0%, transparent 50%),
+            radial-gradient(at 86% 52%, rgba(28, 28, 28, 0.6) 0%, transparent 10%),
+            radial-gradient(at 90% 45%, rgba(22, 22, 22, 0.5) 0%, transparent 16%),
+            radial-gradient(at 53% 54%, rgba(15, 15, 15, 0.4) 0%, transparent 25%),
+            radial-gradient(at 17% 10%, rgba(22, 22, 22, 0.5) 0%, transparent 47%);
+    }
+
+    @utility glass {
+        background-color: rgba(9, 9, 11, 0.55);
+        backdrop-filter: blur(18px) saturate(120%);
+        -webkit-backdrop-filter: blur(18px) saturate(120%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
             0 20px 40px rgba(0, 0, 0, 0.35);
-}
+    }
 
-.glass-premium {
-    backdrop-filter: blur(28px) saturate(160%);
-    -webkit-backdrop-filter: blur(28px) saturate(160%);
-    background: linear-gradient(
-            135deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.03)
-    );
-    border: 1px solid rgba(255,255,255,0.15);
-}
+    @utility glass-premium {
+        backdrop-filter: blur(28px) saturate(160%);
+        -webkit-backdrop-filter: blur(28px) saturate(160%);
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.12),
+                rgba(255, 255, 255, 0.03));
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
 
-.glass-balanced {
-    background-color: rgba(9, 9, 11, 0.45); /* semi-transparent dark base */
-    backdrop-filter: blur(22px) saturate(140%);
-    -webkit-backdrop-filter: blur(22px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.07); /* soft border */
-    box-shadow:
-            inset 0 1px 0 rgba(255,255,255,0.05), /* subtle inner highlight */
-            0 20px 40px rgba(0,0,0,0.35); /* soft outer shadow */
-    border-radius: 1.5rem; /* rounded corners for modern look */
-    /*overflow: hidden;*/
-    position: relative;
-}
+    @utility glass-balanced {
+        background-color: rgba(9, 9, 11, 0.45);
+        /* semi-transparent dark base */
+        backdrop-filter: blur(22px) saturate(140%);
+        -webkit-backdrop-filter: blur(22px) saturate(140%);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        /* soft border */
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.05),
+            /* subtle inner highlight */
+            0 20px 40px rgba(0, 0, 0, 0.35);
+        /* soft outer shadow */
+        border-radius: 1.5rem;
+        /* rounded corners for modern look */
+        /*overflow: hidden;*/
+        position: relative;
+    }
 
-/* Optional: subtle frosted overlay for highlights */
-.glass-balanced::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-            135deg,
-            rgba(255,255,255,0.08),
-            rgba(255,255,255,0.02) 50%,
-            rgba(255,255,255,0.0) 100%
-    );
-    pointer-events: none;
-}
+    /* Optional: subtle frosted overlay for highlights */
+    @utility glass-balanced::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.08),
+                rgba(255, 255, 255, 0.02) 50%,
+                rgba(255, 255, 255, 0.0) 100%);
+        pointer-events: none;
+    }
