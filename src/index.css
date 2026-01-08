@@ -88,25 +88,30 @@ body {
     .glass-balanced {
         position: relative;
         background-color: rgba(9, 9, 11, 0.6) !important;
-    
+
         /* Force blur with !important to prevent overrides */
         backdrop-filter: blur(22px) saturate(140%) !important;
         -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
-        
+
         /* This creates a "Stacking Context" which is required for blur */
         isolation: isolate;
+
+        will-change: backdrop-filter;
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
         
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 1.5rem;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    
+
         &::before {
             content: "";
             position: absolute;
             inset: 0;
             z-index: -1;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-            border-radius: inherit; /* Matches the parent corner radius */
+            border-radius: inherit;
+            /* Matches the parent corner radius */
             pointer-events: none;
         }
     }

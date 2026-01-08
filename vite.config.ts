@@ -9,6 +9,9 @@ export default defineConfig({
     server:{
         host: '0.0.0.0'
     },
+    build: {
+        cssTarget: 'chrome80', // Ensures modern CSS like backdrop-filter is preserved
+      },
     resolve: {
         alias: {
             "@": path.resolve(__dirname, "./src"),
