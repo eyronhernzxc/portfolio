@@ -52,7 +52,7 @@ const BlogSection = () => {
             blogList.sort((a, b) => a.title.localeCompare(b.title));
             setBlogs(blogList);
 
-            setDisplayCount(isMobile ? 3 : 4);
+            setDisplayCount(isMobile ? 3 : 5);
         };
 
         loadBlogs();
