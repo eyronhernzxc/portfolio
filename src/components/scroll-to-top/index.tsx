@@ -14,7 +14,7 @@ const ScrollToTop = () => {
         const handleScroll = () => {
             const scrollTop = window.scrollY || document.documentElement.scrollTop;
             const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const shouldShow = scrollTop > pageHeight / 3;
+            const shouldShow = scrollTop > pageHeight * 0.1;
 
             setVisible(shouldShow);
 

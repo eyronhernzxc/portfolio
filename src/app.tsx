@@ -8,21 +8,29 @@ import GradualBlurMemo from "@/components/gradual-blur";
 const App = () => {
     useEffect(() => {
         const lenis = new Lenis({
-            duration: 3,
-            easing: (t) => t,
-            lerp: 0.07,
+            duration: 2.2, // Slightly faster duration feels more responsive
+            lerp: 0.05,     // Lower lerp = smoother/heavier glide (0.05-0.08 is the sweet spot)
+            // This easing function makes the scroll "drift" to a stop
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+            orientation: 'vertical',
+            gestureOrientation: 'vertical',
+            smoothWheel: true,
+            wheelMultiplier: 1, // Increase to 1.2 if you want it to travel further per scroll
+            touchMultiplier: 2,
             infinite: false,
         });
-
+    
         const raf = (time: number) => {
             lenis.raf(time);
             requestAnimationFrame(raf);
         };
         requestAnimationFrame(raf);
-
+    
         return () => lenis.destroy();
     }, []);
-
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [])
     return <>
 
         <div
