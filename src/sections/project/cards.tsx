@@ -2,7 +2,7 @@ import { useRef } from "react";
 import useCardScale from "./hooks";
 import GlareHover from "@/components/glare-hover";
 
-const Card = ({ title, description, src, url, i, color, targetScale }: any) => {
+const Card = ({ title, description, src, url, i, color, targetScale, isLast}: any) => {
     const { imageRef, cardRef, container } = useCardScale(targetScale);
 
     const imgRef = useRef<HTMLImageElement>(null);
@@ -10,9 +10,8 @@ const Card = ({ title, description, src, url, i, color, targetScale }: any) => {
     return (
         <div
             ref={container}
-            className=" flex items-start justify-center sticky top-50 "
+            className="h-screen flex items-start justify-center sticky top-40 "
         >
-
             <div
                 ref={cardRef}
                 className={`glass-balanced transition-colors duration-200 flex flex-col relative md:h-[500px] w-[1000px] p-[50px] origin-top border-2 border-white/10 rounded-3xl overflow-hidden ${color}`}

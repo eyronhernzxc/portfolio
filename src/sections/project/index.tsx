@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const ProjectSection = () => {
 
     return (
-        <main className="max-w-7xl mx-auto mb-60">
+        <main className="max-w-7xl mx-auto">
             <p className="text-center text-sm text-white/50 uppercase tracking-widest">
                 From Idea to Code
             </p>
