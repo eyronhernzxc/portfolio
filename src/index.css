@@ -1,5 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@source inline("gradient-1");
+@source inline("gradient-2");
+@source inline("gradient-3");
+@source inline("gradient-4");
+
+@source inline("glass");
+@source inline("glass-premium");
+@source inline("glass-balanced");
 
 @custom-variant dark (&:is(.dark *));
 html {
