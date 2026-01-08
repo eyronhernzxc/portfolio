@@ -117,6 +117,7 @@ const HomePage = () => {
 
             <ProjectSection />
             <BlogSection />
+            <div className="h-20 w-full"/>
 
             {/* Contact pop tip */}
             {showContactTip && (
