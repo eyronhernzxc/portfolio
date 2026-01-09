@@ -1,4 +1,6 @@
 import data from './data';
+import BlogIntro from "@/components/blog-intro";
+import PreCode from "@/components/pre-code";
 
 const PHPMVCFrameworkTutorial = () => {
     return (
@@ -16,13 +18,7 @@ const PHPMVCFrameworkTutorial = () => {
             <section className="max-w-full sm:max-w-3xl mt-8 md:mt-12 text-left space-y-10 px-2 sm:px-4">
 
                 {/* Title and Intro */}
-                <div className="space-y-3 sm:space-y-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">{data.title}</h1>
-                    <p className="text-gray-400 text-sm sm:text-base">{data.description}</p>
-                    <p className="text-gray-500 text-xs sm:text-sm">{data.readtime} read time</p>
-                </div>
-
-                <span className="mt-4 mb-6 sm:mb-10 block w-full h-px bg-white"></span>
+                <BlogIntro data={data}/>
 
                 {/* Tutorial Content */}
                 <div className="space-y-6 text-gray-400 text-sm sm:text-base">
@@ -54,8 +50,7 @@ const PHPMVCFrameworkTutorial = () => {
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Project Structure</h2>
                     <p>Let's start by setting up our project structure. Create a new directory for your project and organize it like this:</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`php-mvc-framework/
 ├── composer.json
 ├── config/
@@ -82,14 +77,12 @@ const PHPMVCFrameworkTutorial = () => {
     │       └── notfound.php
     └── Routes/
         └── index.php`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 1: Setting Up Composer and Autoloading</h2>
                     <p>First, let's create our <code>composer.json</code> file to handle autoloading and dependencies:</p>
                     <p>Run <code>composer install</code> to generate the autoloader.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`{
     "name": "your-name/php-mvc-framework",
     "autoload": {
@@ -109,13 +102,11 @@ const PHPMVCFrameworkTutorial = () => {
     ],
     "require": {}
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 2: Configuration File</h2>
                     <p>Create <code>config.php</code> to store our application constants.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 
 // Site Name
@@ -131,13 +122,11 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'my_database');`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 3: Core Classes</h2>
                     <p><strong>Request Class:</strong> The Request class wraps PHP's superglobals and provides a clean interface for accessing request data.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 
 namespace Core;
@@ -182,12 +171,10 @@ class Request
         return $data[$key] ?? $default;
     } 
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <p><strong>Router Class:</strong> The Router handles URL routing with support for parameters and dependency injection.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 
 namespace Core;
@@ -255,12 +242,10 @@ class Router
         return view('notfound');
     }
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <p><strong>Base Controller and Model Classes:</strong></p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 namespace Core;
 
@@ -285,12 +270,10 @@ abstract class Model
         return [];
     }
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <p><strong>Helper Functions:</strong> Create <code>Helpers.php</code> with utility functions.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode>
 {`<?php
 
 if(!function_exists('json')){
@@ -309,26 +292,22 @@ if(!function_exists('view')){
         include "../src/Resources/views/$view.php";
     }
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 4: Application Entry Point</h2>
                     <p>Create <code>index.php</code> as the main entry point.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 
 require '../vendor/autoload.php';
 require_once '../config/config.php';
 
 $router = require '../src/Routes/index.php';`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 5: Routes Configuration</h2>
                     <p>Define your routes in <code>index.php</code>.</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 use App\\Controllers\\HomePageController;
 use Core\\Router;
@@ -339,13 +318,11 @@ $router->get('/', HomePageController::class, 'index');
 $router->get('/user/{id}', HomePageController::class, 'show');
 
 $router->dispatch();`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 6: Creating Controllers and Models</h2>
                     <p><strong>HomePageController:</strong></p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 namespace App\\Controllers;
 
@@ -377,12 +354,10 @@ class HomePageController extends Controller
         ]);
     }
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <p><strong>Journal Model:</strong></p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 namespace App\\Models;
 
@@ -392,13 +367,11 @@ class Journal extends Model
 {
     // Extend with journal-specific methods
 }`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 7: Views</h2>
                     <p>Create a simple view in <code>index.php</code>:</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 <!DOCTYPE html>
 <html lang="en">
@@ -412,12 +385,10 @@ class Journal extends Model
     <p><?php echo $description; ?></p>
 </body>
 </html>`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <p>And a 404 view in <code>notfound.php</code>:</p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code>
+                    <PreCode >
 {`<?php
 <!DOCTYPE html>
 <html lang="en">
@@ -431,8 +402,7 @@ class Journal extends Model
     <p>The page you're looking for doesn't exist.</p>
 </body>
 </html>`}
-                        </code>
-                    </pre>
+                    </PreCode>
 
                     <h2 className="text-xl sm:text-2xl font-semibold text-white mt-4">Step 8: Running the Application</h2>
                     <p>To run your application:</p>

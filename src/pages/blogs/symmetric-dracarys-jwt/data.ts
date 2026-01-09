@@ -2,5 +2,6 @@ export default {
     img: '/blog/dracarys.jpg',
     title: "Dracarys JWT",
     description: "Securely implement and manage JWT in your Laravel project with clear examples.",
-    readtime: "Dec 13, 2025 • 10m"
+    readtime: "Dec 13, 2025 • 10m",
+    source_code: "https://github.com/Jushiro012623/dracarys-jwt"
 }

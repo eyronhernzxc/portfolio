@@ -109,7 +109,7 @@ body {
             position: absolute;
             inset: 0;
             z-index: -1;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+            background: oklch(14.5% 0 0 / .1);
             border-radius: inherit;
             /* Matches the parent corner radius */
             pointer-events: none;

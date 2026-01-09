@@ -1,4 +1,6 @@
 import data from './data'
+import BlogIntro from "@/components/blog-intro";
+import PreCode from "@/components/pre-code";
 
 const InfyHowToUse = () => {
     return (
@@ -16,25 +18,7 @@ const InfyHowToUse = () => {
             <section className="max-w-full sm:max-w-3xl mt-8 md:mt-12 text-left space-y-10 px-2 sm:px-4">
 
                 {/* Title and Intro */}
-                <div className="space-y-3 sm:space-y-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">{data.title}</h1>
-                    <p className="text-gray-400 text-sm sm:text-base">{data.description}</p>
-                    <p className="text-gray-500 text-xs sm:text-sm">{data.readtime} read time</p>
-
-                    {/* NPM Link */}
-                    <div className="mt-2">
-                        <a
-                            href="https://www.npmjs.com/package/infy-react-cli"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="text-blue-400 hover:text-blue-500 underline text-sm sm:text-base"
-                        >
-                            View package on npm
-                        </a>
-                    </div>
-
-                    <span className="mt-4 mb-6 sm:mb-10 block w-full h-px bg-white"></span>
-                </div>
+                <BlogIntro data={data}/>
 
                 {/* Starter Topic */}
                 <div className="space-y-8">
@@ -66,20 +50,20 @@ const InfyHowToUse = () => {
                         <h2 className="text-xl sm:text-2xl font-semibold text-white mb-2">Installation</h2>
 
                         <p className="text-gray-400 text-sm sm:text-base">Global installation (via npm):</p>
-                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                        <PreCode>
 {`npm install -g infy-react-cli`}
-                        </pre>
+                        </PreCode>
 
                         <p className="text-gray-400 text-sm sm:text-base">Or via yarn:</p>
-                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                        <PreCode>
 {`yarn global add infy-react-cli`}
-                        </pre>
+                        </PreCode>
 
                         <p className="text-gray-400 text-sm sm:text-base">Local installation (recommended for teams):</p>
-                        <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                        <PreCode>
 {`npm install infy-react-cli --save-dev
 npx infy g component Button`}
-                        </pre>
+                        </PreCode>
 
                         <p className="text-sm sm:text-base text-gray-400">
                             You can also install directly from npm:{" "}

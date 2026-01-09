@@ -1,5 +1,7 @@
 import React from "react";
 import data from './data.ts'
+import BlogIntro from "@/components/blog-intro";
+import PreCode from "@/components/pre-code";
 const CustomExpressFramework = () => {
     return (
         <main className="flex flex-col items-center w-full px-4 sm:px-6 md:px-0 mb-40">
@@ -16,13 +18,7 @@ const CustomExpressFramework = () => {
             <section className="max-w-3xl w-full mt-12 space-y-10 text-left">
 
                 {/* Title */}
-                <div className="space-y-3">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">{data.title}</h1>
-                    <p className="text-gray-400 text-sm sm:text-base">{data.description}</p>
-                    <p className="text-gray-500 text-xs sm:text-sm">{data.readtime} read time</p>
-                </div>
-
-                <hr className="border-white/20" />
+                <BlogIntro data={data}/>
 
                 {/* Introduction */}
                 <section className="space-y-4">
@@ -61,12 +57,12 @@ const CustomExpressFramework = () => {
 
                     <h3 className="text-xl font-semibold text-white">Installation</h3>
 
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode>
 {`git clone <repository-url>
 cd express-framework-main
 npm install
 npm run dev`}
-                    </pre>
+                    </PreCode>
                 </section>
 
                 {/* Architecture */}
@@ -90,7 +86,7 @@ npm run dev`}
                         Creating a Controller
                     </h2>
 
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode >
 {`@Controller('/users')
 export class UserController {
 
@@ -108,7 +104,7 @@ export class UserController {
         return this.userServices.create(req, res);
     }
 }`}
-                    </pre>
+                    </PreCode>
                 </section>
 
                 {/* Validation */}
@@ -117,13 +113,13 @@ export class UserController {
                         Request Validation
                     </h2>
 
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode >
 {`export const CreateUserSchema = [
     body('username').notEmpty(),
     body('email').isEmail(),
     body('password').isLength({ min: 8 }),
 ];`}
-                    </pre>
+                    </PreCode>
 
                     <p className="text-gray-400">
                         Validation is automatically executed before controller methods
@@ -137,7 +133,7 @@ export class UserController {
                         Implementing Services
                     </h2>
 
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode >
 {`@Injectable()
 export class UserServices {
     private users = [];
@@ -152,7 +148,7 @@ export class UserServices {
         return res.status(201).json(user);
     }
 }`}
-                    </pre>
+                    </PreCode>
                 </section>
 
                 {/* Error Handling */}
@@ -166,14 +162,14 @@ export class UserServices {
                         API responses.
                     </p>
 
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode >
 {`export const errorHandler = (err, req, res, next) => {
     res.status(err.status || 500).json({
         message: err.message,
         errors: err.errors || null,
     });
 };`}
-                    </pre>
+                    </PreCode>
                 </section>
 
                 {/* Conclusion */}

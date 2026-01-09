@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Icons } from "./icons";
-
+import data from '../../../data.ts'
 const TopBar = () => {
     const [scrolled, setScrolled] = useState(false);
 
@@ -23,7 +23,7 @@ const TopBar = () => {
                 `}
             >
                 <span className="uppercase font-black text-white/30 tracking-wider grow text-sm sm:text-base">
-                    ivan martin
+                    {data.name}
                 </span>
                 {Icons.map(({ icon: Icon, link }, index) => (
                     <button

@@ -1,5 +1,7 @@
 import React from "react";
 import data from './data';
+import BlogIntro from "@/components/blog-intro";
+import PreCode from "@/components/pre-code";
 
 const DracarysJWTLaravel = () => {
     return (
@@ -17,24 +19,7 @@ const DracarysJWTLaravel = () => {
             <section className="max-w-full sm:max-w-3xl mt-8 md:mt-12 text-left space-y-10 px-2 sm:px-4 text-wrap">
 
                 {/* Title and Intro */}
-                <div className="space-y-3 sm:space-y-4">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-200">{data.title}</h1>
-                    <p className="text-gray-400 text-sm sm:text-base">{data.description}</p>
-                    <p className="text-gray-500 text-xs sm:text-sm">{data.readtime} read time</p>
-
-                    {/* Packagist Link */}
-                    <div className="mt-2">
-                        <a
-                            href="https://packagist.org/packages/dracarys/jwt#v1.0.0"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="text-blue-400 hover:text-blue-500 underline text-sm sm:text-base"
-                        >
-                            View package on Packagist
-                        </a>
-                    </div>
-                    <span className="mt-4 mb-6 sm:mb-10 block w-full h-px bg-white"></span>
-                </div>
+                <BlogIntro data={data} />
 
                 {/* Why JWT in Laravel */}
                 <div className="space-y-3 sm:space-y-4">
@@ -57,9 +42,9 @@ const DracarysJWTLaravel = () => {
                     <p className="text-gray-400 text-sm sm:text-base">
                         To integrate Dracarys JWT into your Laravel 11 project, you first need to install it using Composer:
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode>
                         {`composer require dracarys/jwt`}
-                    </pre>
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
                         This command downloads the package and automatically registers it with Laravel using the package auto-discovery feature.
                         After installation, you’re ready to generate a secure JWT secret key.
@@ -73,23 +58,23 @@ const DracarysJWTLaravel = () => {
                         Every JWT requires a secret key to sign tokens securely. Dracarys JWT provides a simple way to generate and manage this key.
                         Start by creating a custom Artisan command:
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
+                    <PreCode>
                         {`php artisan make:command GenerateJwtKeyCommand`}
-                    </pre>
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
-                        This will create a new command file in <code className="text-white">app/Console/Commands/</code>. Define the command's **signature** and **description**:
+                        This will create a new command file in <code className="text-white">app/Console/Commands/. Define the command's **signature** and **description**:</code>
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`protected $signature = 'jwt:secret';
 protected $description = 'Generate a JWT secret and save it to the .env file.';`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base mt-2">
-                        Implement the <code className="text-white">handle</code> method to generate a strong, random key and save it automatically to your <code className="text-white">.env</code> file:
+                        Implement the handle method to generate a strong, random key and save it automatically to your <code className="text-white">.env file:</code>
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`public function handle(): void
 {
     $jwtSecret = base64_encode(random_bytes(64));
@@ -110,8 +95,8 @@ protected $description = 'Generate a JWT secret and save it to the .env file.';`
     $this->info('JWT Secret generated successfully');
     $this->line($keyValue);
 }`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
                         Running <code className="text-white">php artisan jwt:secret</code> will create a strong, unique key and persist it in your environment file,
                         which will be used for signing all JWT tokens in your application.
@@ -124,32 +109,32 @@ protected $description = 'Generate a JWT secret and save it to the .env file.';`
                     <p className="text-gray-400 text-sm sm:text-base">
                         To centralize JWT operations, create a dedicated Service class. First, create the directory and service file:
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`# Create directory
 mkdir app\\Service\\Jwt
 
 # Create service file
 touch app\\Service\\Jwt\\JwtService.php`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
-                        In <code className="text-white">JwtService.php</code>, configure the symmetric encryption using SHA256:
+                        In <code className="text-white">JwtService.php, configure the symmetric encryption using SHA256:</code>
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`public function config()
 {
     $secret = env('JWT_SECRET');
     return Configuration::symmetric(new Sha256(), new Symmetric($secret));
 }`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
                         Add a method to create tokens with claims such as `aud`, `iss`, `sub`, and `iat`:
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`public function createToken()
 {
     $claims = new TokenData([
@@ -161,13 +146,13 @@ touch app\\Service\\Jwt\\JwtService.php`}
 
     return $this->config()->createToken($claims, $headers)->toString();
 }`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
                     <p className="text-gray-400 text-sm sm:text-base">
                         Include methods to parse and validate JWTs, ensuring tokens are authentic and have not been tampered with:
                     </p>
-                    <pre className="glass-balanced gradient-1 p-4 !rounded-xl text-sm overflow-x-auto">
-                        <code className="language-php">
+                    <PreCode>
+                        
 {`public function parseToken($tokenString) { 
     if (empty($tokenString)) {
             throw new UnauthorizedException('Token string is empty');
@@ -194,8 +179,8 @@ public function validateToken($tokenString) {
         throw new AuthenticationException('Invalid or expired token');
     } 
 }`}
-                        </code>
-                    </pre>
+                        
+                    </PreCode>
 
                     {/* Conclusion */}
                     <div className="mt-8 sm:mt-10 space-y-2">
