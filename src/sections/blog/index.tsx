@@ -52,7 +52,7 @@ const BlogSection = () => {
             blogList.sort((a, b) => a.title.localeCompare(b.title));
             setBlogs(blogList);
 
-            setDisplayCount(isMobile ? 3 : 5);
+            setDisplayCount(isMobile ? 3 : 4);
         };
 
         loadBlogs();
@@ -63,30 +63,32 @@ const BlogSection = () => {
     const animateNewCards = () => {
         if (!containerRef.current) return;
 
-        // Select only visible cards that have not been animated yet
-        const cards = Array.from(containerRef.current.querySelectorAll(".blog-card"))
-            .slice(-3); // animate only the last 3 new cards
+        const cards = Array.from(
+            containerRef.current.querySelectorAll<HTMLDivElement>(
+                ".blog-card[data-animated='false']"
+            )
+        );
+
+        if (!cards.length) return;
 
         gsap.fromTo(
             cards,
-            { y: 150, opacity: 0, scale: 1 },
+            { y: 120, opacity: 0 },
             {
                 y: 0,
                 opacity: 1,
-                scale: 1.05,
-                duration: 1.2,
+                duration: 1,
                 ease: "power3.out",
                 stagger: 0.15,
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: "top 80%",
-                    end: "bottom 20%",
-                    toggleActions: "play none none none",
-                    markers: false,
+                onComplete: () => {
+                    cards.forEach(card =>
+                        card.setAttribute("data-animated", "true")
+                    );
                 },
             }
         );
     };
+
 
     useEffect(() => {
         animateNewCards();
@@ -111,7 +113,6 @@ const BlogSection = () => {
             <div className="mt-14 max-w-5xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-12 place-items-center px-6">
                 {displayedBlogs
                     .slice()
-                    .reverse()
                     .map((blog, index) => (
                         <BlogCard
                             key={index}

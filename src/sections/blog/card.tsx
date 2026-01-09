@@ -19,7 +19,7 @@ const BlogCard = ({
 
 
     return (
-            <div  className="p-2.5 lg:p-0">
+            <div  className="p-2.5 lg:p-0 blog-card" data-animated="false">
             <div
                 className={`${gradientClass} overflow-hidden glass-balanced relative border-2 border-white/10 w-full md:w-72 h-96 rounded-2xl p-5 cursor-pointer group flex flex-col justify-between transition-shadow duration-300`}
                 onClick={() => window.open(link, "_blank")}
