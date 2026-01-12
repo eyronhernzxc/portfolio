@@ -1,5 +1,5 @@
 import Card from "./cards";
-import { projects } from "./data";
+import data from '@/data.ts';
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
@@ -17,8 +17,8 @@ export const ProjectSection = () => {
                 Real Projects & Builds
             </p>
             <div className="max-w-7xl mx-auto relative mt-24 ">
-                {projects.map((project, i) => {
-                    const targetScale = 1 - (projects.length - i) * 0.05;
+                {data.projects.map((project, i) => {
+                    const targetScale = 1 - (data.projects.length - i) * 0.05;
                     return (
                             <Card
                                 key={`p_${i}`}

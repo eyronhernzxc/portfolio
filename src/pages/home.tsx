@@ -8,27 +8,12 @@ import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
 import CountUp from "@/components/count";
 import ContactComponent from "@/components/contact-component";
+import data from '@/data.ts'
+import {CountLoader} from "@/components/count-loader";
 const HomePage = () => {
     const [loading, setLoading] = useState(true);
-    const [slideUp, setSlideUp] = useState(false);
     const [showContactTip, setShowContactTip] = useState(false); // NEW
-
-    const imageLogos = [
-        { src: "/assets/laravel.svg", alt: "laravel icon" },
-        { src: "/assets/react.svg", alt: "react icon" },
-        { src: "/assets/dotnet.svg", alt: "dotnet icon" },
-        { src: "/assets/git.svg", alt: "git icon" },
-        { src: "/assets/nextjs.svg", alt: "nextjs icon" },
-        { src: "/assets/node.svg", alt: "node icon" },
-        { src: "/assets/typescript.svg", alt: "typescript icon" },
-        { src: "/assets/vite.svg", alt: "vite icon" },
-        { src: "/assets/express.svg", alt: "express icon" },
-        { src: "/assets/py.svg", alt: "python icon" },
-        { src: "/assets/redux.svg", alt: "redux icon" },
-        { src: "/assets/tailwind.svg", alt: "tailwind icon" },
-        { src: "/assets/angular.svg", alt: "angular icon" },
-        { src: "/assets/nestjs.svg", alt: "nestjs icon" },
-    ];
+    const [slideUp, setSlideUp] = useState(false);
 
     // Loading screen
     useEffect(() => {
@@ -56,40 +41,25 @@ const HomePage = () => {
                 setShowContactTip(false);
             }
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
         <Fragment>
-            {loading && (
-                <div
-                    className={`
-                        fixed inset-0 flex flex-col items-center justify-center gradient-2 text-white z-9999 gradient-3
-                        transition-all duration-500
-                        ${slideUp ? "-translate-y-full" : "translate-y-0"}
-                    `}
-                >
-                    <Noise
-                        patternSize={250}
-                        patternScaleX={1}
-                        patternScaleY={1}
-                        patternRefreshInterval={2}
-                        patternAlpha={15}
-                    />
-                    <span className="text-3xl font-bold mb-4">
-                        <CountUp to={100} from={0} duration={1.5} startWhen={true} />%
-                    </span>
-                </div>
-            )}
+            {/* PAGE LOADER */}
+            {loading && <CountLoader slideUp={slideUp}/>}
 
-            {/* Backgrounds */}
+            {/* BACKGROUND RAY */}
             <LightRaysBackground />
+
+            {/* NAVBAR */}
             <TopBar />
 
+            {/* SECTIONS */}
             <HeroSection />
 
+            {/* ICON STACK */}
             <div
                 className="relative w-[90%] md:max-w-5xl m-auto mb-24 -translate-y-20 overflow-hidden"
                 style={{
@@ -99,9 +69,8 @@ const HomePage = () => {
                         "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
                 }}
             >
-
             <LogoLoop
-                    logos={imageLogos}
+                    logos={data.tech_stack}
                     speed={50}
                     direction="left"
                     logoHeight={48}
@@ -115,11 +84,12 @@ const HomePage = () => {
                 />
             </div>
 
+            {/* SECTION */}
             <ProjectSection />
             <BlogSection />
             <div className="h-20 w-full"/>
 
-            {/* Contact pop tip */}
+            {/* CONTACT POP */}
             {showContactTip && (
                 <ContactComponent />
             )}

@@ -14,6 +14,7 @@ const BlogPage = () => {
 
     if (!importer) {
         return <NotFound />;
+
     }
 
     const BlogComponent = lazy(() =>
