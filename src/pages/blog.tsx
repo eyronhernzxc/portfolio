@@ -25,7 +25,7 @@ const BlogPage = () => {
 
     return (
         <Suspense fallback={<PageLoading />}>
-            <main className="z-50 relative">
+            <main className=" relative">
                 <BlogComponent />
             </main>
         </Suspense>

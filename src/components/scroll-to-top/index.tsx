@@ -51,20 +51,21 @@ const ScrollToTop = () => {
     }, []);
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        console.log('click scroll to top')
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };
 
     const [hovered, setHovered] = useState(false);
     const labelVisible = showLabel || (!isTouchDevice && hovered);
 
     return (
-        <div className="fixed bottom-8 right-4 z-40 flex flex-col items-center justify-end ">
+        <div className="fixed bottom-8 right-4 z-40 flex flex-col items-center justify-end">
 
         {/* Label */}
             <span
                 className={`
                     mb-2 px-3 py-1 rounded-full glass-balanced gradient-1 text-white/50 text-xs
-                    transition-all duration-300 overflow-hidden
+                    transition-all duration-300 overflow-hidden pointer-events-none
                     ${labelVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}
                 `}
             >
