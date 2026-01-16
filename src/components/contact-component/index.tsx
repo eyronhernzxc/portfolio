@@ -1,7 +1,7 @@
 import data from '../../data.ts'
 const ContactComponent = () => {
     return (
-        <div className="w-[90%] glass-balanced overflow-hidden  translate-x-1/2 right-1/2 md:w-[270px] space-y-3 !fixed md:translate-x-0 bottom-8 md:right-8 z-50 gradient-4 border border-white/10 p-4 rounded-xl">
+        <div className="w-[90%] glass-balanced overflow-hidden translate-x-1/2 right-1/2 md:w-[270px] space-y-3 !fixed md:translate-x-0 bottom-8 md:right-8 z-50 gradient-4 border border-white/10 p-4 rounded-xl">
 
             <div className="flex gap-3">
                 <p className="text-xs text-white/50">Get in touch</p>
@@ -22,7 +22,7 @@ const ContactComponent = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-        text-xs text-white/70
+        text-xs text-white/50 hover:text-white
         w-full
         flex items-center justify-center
         py-2

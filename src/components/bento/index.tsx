@@ -1,25 +1,25 @@
-import { forwardRef } from "react";
-import useBentoTilt from "./hooks";
+import { forwardRef,  } from "react";
 import type { BentoTiltProps } from "./types";
+import useBentoTilt from "@/components/bento/hooks.tsx";
 
 export const BentoTilt = forwardRef<HTMLDivElement, BentoTiltProps>(
-  ({ children, className = "", style }, ref) => {
-    const { transformStyle, itemRef, handleMouseMove, handleMouseLeave } =
-      useBentoTilt(ref);
+    ({ children, className = "", style }, ref) => {
+        const { itemRef, handleMouseMove, handleMouseLeave, handleMouseEnter } =
+            useBentoTilt();
 
-    const bentoStyle = { transform: transformStyle, ...style };
-
-    return (
-      <div
-        ref={itemRef}
-        className={`transition-all ease-in-out ${className}`}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={bentoStyle}>
-        {children}
-      </div>
-    );
-  }
+        return (
+            <div
+                ref={itemRef}
+                className={`transition-transform ease-out ${className}`}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                onMouseEnter={handleMouseEnter}
+                style={style}
+            >
+                {children}
+            </div>
+        );
+    }
 );
 
 BentoTilt.displayName = "BentoTilt";

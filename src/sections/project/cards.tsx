@@ -2,7 +2,7 @@ import { useRef } from "react";
 import useCardScale from "./hooks";
 import GlareHover from "@/components/glare-hover";
 
-const Card = ({ title, description, src, url, i, color, targetScale, isLast}: any) => {
+const Card = ({ title, description, src, url, i, color, targetScale, preview}: any) => {
     const { imageRef, cardRef, container } = useCardScale(targetScale);
 
     const imgRef = useRef<HTMLImageElement>(null);
@@ -27,9 +27,9 @@ const Card = ({ title, description, src, url, i, color, targetScale, isLast}: an
                             {title}
                         </h2>
 
-                        <span className="block h-5 w-full" />
+                        <span className="hidden md:block h-5 w-full" />
 
-                        <p className="text-base first-letter:text-3xl tracking-wide">
+                        <p className="hidden md:block text-base first-letter:text-3xl tracking-wide">
                             {description}
                         </p>
 
@@ -37,9 +37,9 @@ const Card = ({ title, description, src, url, i, color, targetScale, isLast}: an
                             href={url}
                             target="_blank"
                             rel="noreferrer"
-                            className="hidden md:block overflow-hidden text-sm !absolute bottom-0 left-0 transition-colors glass-balanced py-3 px-6"
+                            className="hidden md:block overflow-hidden text-white/50 hover:text-white text-sm !absolute bottom-0 left-0 transition-colors glass-balanced py-3 px-6"
                         >
-                            {url === "#" ? "See More" : "Live Preview"}
+                            {preview === "DEMO" ? "View Demo" : "Live Preview"}
                         </a>
                     </div>
 
@@ -69,6 +69,18 @@ const Card = ({ title, description, src, url, i, color, targetScale, isLast}: an
                         </div>
                     </div>
                 </div>
+                <button
+                    className={`
+                        md:hidden
+                        mt-6
+                        relative p-3  cursor-pointer text-white/50 shadow-lg
+                        transition-all duration-500  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
+                        !w-full !h-10 text-sm hover:text-white
+                `}
+                    onClick={() => window.open(url, "_blank")}
+                >
+                    Learn More
+                </button>
             </div>
 
         </div>

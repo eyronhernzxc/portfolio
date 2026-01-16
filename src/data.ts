@@ -5,6 +5,7 @@ export default {
     email: "ivanallen64@gmail.com",
     profile_path: "/assets/me.jpg",
     career_role: "Sofware Developer",
+    phone: '09125279754',
     career_desc: "I specialize in building scalable, maintainable web applications using modern frontend and backend technologies",
     tech_stack: [
         { src: "/assets/laravel.svg", alt: "laravel icon" },
@@ -24,49 +25,69 @@ export default {
     ],
     projects: [
         {
+            title: "BYB Themed Park",
+            description: "Developed the backend for a theme park ticketing system with APIs for bookings, validation, and ticket processing.",
+            src: "byb.png",
+            url: "https://tickets.blueskythemepark.ph/",
+            color: "gradient-2",
+            img: "shadow-lg",
+            preview: "LIVE",
+        },
+        {
+            title: "Oceanwide Enrollment",
+            description: "Developed the backend APIs for an online enrollment system with student management and secure data processing.",
+            src: "oceanwide.png",
+            url: "https://oceanwide-enrollment.pisopay.com.ph/",
+            color: "gradient-2",
+            img: "shadow-lg",
+            preview: "LIVE",
+        },
+        {
+            title: "Barangay Management",
+            description: "Built a full-stack web platform for Barangay management, including dashboards, forms, and backend services for residents and councils.",
+            src: "bms.png",
+            url: "https://bms-mock.vercel.app/login",
+            color: "gradient-3",
+            img: "shadow-lg shadow-neutral-800",
+            preview: "DEMO",
+        },
+        {
             title: "Triumphs Co. E-Commerce",
-            description:
-                "A go-to thrift shop where you can find a wide range of thrift products at unbeatable prices.",
+            description: "Designed and developed the frontend of a thrift shop e-commerce site with responsive layouts, interactive UI, and engaging product displays.",
             src: "tc.png",
             url: "#",
             color: "gradient-1",
             img: "shadow-lg shadow-neutral-800",
+            preview: "DEMO",
         },
         {
-            title: "Barangay Management",
-            description:
-                "Streamlines operations and improves services for Barangay 107 residents and councils.",
-            src: "bms-v2.png",
-            url: "https://bms-mock.vercel.app/login",
-            color: "gradient-3",
-            img: "shadow-lg shadow-neutral-800",
-        },
-        {
-            title: "UDMAP AR Navigation",
-            description:
-                "AR navigation platform providing real-time directions within the college campus.",
+            title: "UDMAPS AR Navigation",
+            description: "Developed the frontend of an AR navigation platform with interactive maps and real-time directions for campus navigation.",
             src: "udm-no-bg.png",
             url: "#",
             color: "gradient-1",
             img: "shadow-lg",
+            preview: "DEMO",
+        },
+    ],
+    experience: [
+        {
+            start: "June 2024",
+            company: "Pisopay.com Inc",
+            end: "Present",
+            desc: "Developed scalable applications and core systems such as a payment gateway, admin dashboard, and authentication service, designing robust APIs and database structures to ensure secure, high-performance workflows and efficient data flow across the platform. ",
+            logo: "/assets/pisopayTM.png",
+            position: "Backend Developer",
+            logoAlt: "PPAY LOGO"
         },
         {
-            title: "Iphone 15 Website Clone",
-            description:
-                "A clone of Apple’s iPhone 15 Pro page, showcasing design, specs, and animations.",
-            src: "iphone.png",
-            url: "https://iphone-clone-green.vercel.app/",
-            color: "gradient-2",
-            img: "shadow-lg",
-        },
-        {
-            title: "Zentry Website Clone",
-            description:
-                "A platform connecting players across games and platforms to collaborate and compete.",
-            src: "zentry.png",
-            url: "https://zentry-inky.vercel.app/",
-            color: "gradient-2",
-            img: "shadow-lg",
-        },
+            start: "January 2023",
+            company: "DepEd - Manila",
+            end: "May 2023",
+            desc: "Designed new ID layouts as a Graphic Designer and developed a responsive budget management system as a Frontend Developer, creating intuitive interfaces and ensuring smooth user experience. ",
+            logo: "/assets/deped.webp",
+            position: "Frontend Developer / Graphic Designer - Intern",
+            logoAlt: "DEPED LOGO"
+        }
     ]
 }

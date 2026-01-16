@@ -10,6 +10,7 @@ import CountUp from "@/components/count";
 import ContactComponent from "@/components/contact-component";
 import data from '@/data.ts'
 import {CountLoader} from "@/components/count-loader";
+import ExperienceSection from "@/sections/experience";
 const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [showContactTip, setShowContactTip] = useState(false); // NEW
@@ -86,8 +87,10 @@ const HomePage = () => {
 
             {/* SECTION */}
             <ProjectSection />
+            <ExperienceSection />
             <BlogSection />
             <div className="h-20 w-full"/>
+
 
             {/* CONTACT POP */}
             {showContactTip && (
