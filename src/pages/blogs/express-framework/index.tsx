@@ -26,165 +26,369 @@ const CustomExpressFramework = () => {
                         Introduction
                     </h2>
                     <p className="text-gray-400">
-                        Express.js has long been the go-to framework for building APIs
-                        in Node.js. However, as applications scale, maintaining clean
-                        architecture and avoiding repetitive boilerplate becomes
-                        increasingly difficult.
-                    </p>
-                    <p className="text-gray-400">
-                        This article introduces a custom Express framework written in
-                        TypeScript that uses decorators, dependency injection, and
-                        built-in validation to simplify API development.
+                        If you've ever worked with Express.js, you'll know it's powerful but often requires significant boilerplate code for routing, validation, and dependency injection. Today, I'm excited to share Express Made Easy - a framework that maintains all the flexibility of Express while adding powerful decorators and structured patterns that simplify API development.
                     </p>
                 </section>
 
                 {/* Setup */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Setting Up the Project
+                        What Makes Express Made Easy Special?
                     </h2>
 
                     <p className="text-gray-400">
-                        The framework is built with TypeScript and follows a modular
-                        architecture.
+                        This framework keeps the Express.js foundation you love while introducing:
                     </p>
-
-                    <h3 className="text-xl font-semibold text-white">Prerequisites</h3>
                     <ul className="list-disc list-inside text-gray-400">
-                        <li>Node.js (v14 or higher)</li>
-                        <li>npm or yarn</li>
+                        <li>TypeScript-first approach with full type safety</li>
+                        <li>Decorator-based routing for clean, intuitive API definition</li>
+                        <li>Built-in validation with express-validator integration</li>
+                        <li>Dependency injection for better testability and organization</li>
+                        <li>Structured error handling with custom exceptions</li>
+                        <li>Minimal boilerplate without sacrificing functionality</li>
                     </ul>
 
-                    <h3 className="text-xl font-semibold text-white">Installation</h3>
+                    <h3 className="text-xl font-semibold text-white">Core Architecture Overview</h3>
 
+                    <p className="text-gray-400">
+                        The framework follows a clean separation of concerns with controllers handling HTTP logic, services containing business logic, and models defining data structures.
+                    </p>
+
+                    <h3 className="text-xl font-semibold text-white">The Main Components</h3>
+                    <h3 className="text-xl font-semibold text-white">1. Configuration Management</h3>
+                    <p className="text-gray-400">
+                        The framework loads configuration from environment variables with sensible defaults:
+                    </p>
                     <PreCode>
-{`git clone <repository-url>
-cd express-framework-main
-npm install
-npm run dev`}
+{`// src/config/app.ts
+const config = {
+    port: parseInt(process.env.PORT ?? '5001', 10),
+    nodeEnv: process.env.NODE_ENV ?? 'development',
+    url: process.env.BASE_URL ?? '/api/v1',
+    timezone: 'Asia/Manila',
+    locale: 'en',
+    debug: (process.env.APP_DEBUG ?? 'false') === 'true'
+};`}
                     </PreCode>
                 </section>
 
                 {/* Architecture */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Framework Architecture
+                        2. Decorator-Based Routing
                     </h2>
 
-                    <ul className="list-disc list-inside text-gray-400">
-                        <li>Decorators for routing and DI</li>
-                        <li>Controllers for request handling</li>
-                        <li>Services for business logic</li>
-                        <li>Validators for request validation</li>
-                        <li>Middleware and custom exceptions</li>
-                    </ul>
+                    <p className="text-gray-400">
+                        Say goodbye to verbose route definitions. Our routing decorators make API endpoints clean and self-documenting
+                    </p>
+                    <PreCode>
+                        {`// src/user/user.controller.ts
+@Controller('/users')
+export class UserController {
+
+    @Inject(UserServices)
+    private userServices!: UserServices
+
+    @Get('/')
+    @Validate(FindAllUserSchema)
+    findAll(req: Request, res: Response) {
+        return this.userServices.findAll(req, res)
+    }
+
+    @Get('/:id')
+    findOne(req: Request, res: Response) {
+        return this.userServices.findOne(req, res)
+    }
+
+    @Post("/")
+    @Validate(CreateUserSchema)
+    create(req: Request, res: Response) {
+        return this.userServices.create(req, res)
+    }
+}`}
+                    </PreCode>
                 </section>
 
                 {/* Controller */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Creating a Controller
+                        3. Built-in Validation
                     </h2>
-
+                    <p className="text-gray-400">
+                        Validation becomes declarative and reusable with our @Validate decorator:
+                    </p>
                     <PreCode >
-{`@Controller('/users')
-export class UserController {
+{`// src/user/validators/create-user-validator.ts
+export const CreateUserSchema: ValidationChain[] = [
+    body('username')
+        .notEmpty().withMessage('Username is required')
+        .isString().withMessage('Username must be a string'),
 
-    @Inject(UserServices)
-    private userServices!: UserServices;
-
-    @Get('/')
-    findAll(req, res) {
-        return this.userServices.findAll(req, res);
-    }
-
-    @Post('/')
-    @Validate(CreateUserSchema)
-    create(req, res) {
-        return this.userServices.create(req, res);
-    }
-}`}
+    body('email')
+        .notEmpty().withMessage('Email is required')
+        .isEmail().withMessage('Email must be valid email address'),
+];`}
                     </PreCode>
+                    <p className="text-gray-400">
+                        In this case we use <strong className="text-white">express-validator</strong> but you can still use your favourite validation library.
+                    </p>
                 </section>
 
                 {/* Validation */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Request Validation
+                        4. Dependency Injection
+                    </h2>
+                    <p className="text-gray-400">
+                        Our lightweight DI container manages service dependencies automatically:
+                    </p>
+
+                    <PreCode >
+{`// src/utils/decorators/injecting.ts
+export function Inject(type: any) {
+    return function (target: any, propertyKey: string) {
+        Object.defineProperty(target, propertyKey, {
+            get: () => container.get(type),
+            enumerable: true,
+            configurable: true,
+        });
+    };
+}`}
+                    </PreCode>
+
+                    <span className="mt-4 mb-6 sm:mb-10 block w-full h-px "></span>
+                    <h2 className="text-3xl font-semibold text-white">
+                        Getting Started
+                    </h2>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Installation
                     </h2>
 
                     <PreCode >
-{`export const CreateUserSchema = [
-    body('username').notEmpty(),
-    body('email').isEmail(),
-    body('password').isLength({ min: 8 }),
-];`}
+                        {`npm install express body-parser express-validator reflect-metadata
+npm install -D typescript @types/express ts-node nodemon`}
                     </PreCode>
-
-                    <p className="text-gray-400">
-                        Validation is automatically executed before controller methods
-                        run. Invalid requests throw a ValidationException.
-                    </p>
                 </section>
 
                 {/* Services */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Implementing Services
+                        Project Structure
                     </h2>
 
                     <PreCode >
-{`@Injectable()
-export class UserServices {
-    private users = [];
-
-    findAll(req, res) {
-        return res.json(this.users);
-    }
-
-    create(req, res) {
-        const user = { id: Date.now(), ...req.body };
-        this.users.push(user);
-        return res.status(201).json(user);
-    }
-}`}
+{`src/
+├── config/          # App configuration
+├── constants/       # HTTP status codes and constants
+├── exceptions/      # Custom exception classes
+├── middlewares/     # Express middleware
+├── user/           # Feature module example
+│   ├── validators/  # Validation schemas
+│   ├── user.controller.ts
+│   ├── user.model.ts
+│   └── user.services.ts
+├── utils/          # Framework utilities
+│   ├── decorators/  # Routing, validation, DI decorators
+│   ├── app-error.ts
+│   └── exit-handlers.ts
+├── app.ts          # Main app class
+├── middlewares.ts  # Middleware configuration
+└── server.ts       # Server entry point`}
                     </PreCode>
                 </section>
 
                 {/* Error Handling */}
                 <section className="space-y-4">
                     <h2 className="text-2xl font-semibold text-white">
-                        Error Handling
+                        Creating Your First API
                     </h2>
-
                     <p className="text-gray-400">
-                        Custom exceptions and a global error handler ensure consistent
-                        API responses.
+                        1. Define Your Model:
                     </p>
 
                     <PreCode >
-{`export const errorHandler = (err, req, res, next) => {
-    res.status(err.status || 500).json({
-        message: err.message,
-        errors: err.errors || null,
-    });
-};`}
+{`// src/product/product.model.ts
+export type Product = {
+    id: number;
+    name: string;
+    price: number;
+    created_at: string;
+    updated_at: string;
+}`}
+                    </PreCode>
+                    <p className="text-gray-400">
+                        2. Create a Service:
+                    </p>
+
+                    <PreCode >
+                        {`// src/product/product.services.ts
+import { Injectable } from '../utils/decorators/injecting';
+
+@Injectable()
+export class ProductServices {
+    private products: Product[] = [];
+
+    findAll() {
+        return this.products;
+    }
+    
+    // ... other service methods
+}`}
+                    </PreCode>
+                    <p className="text-gray-400">
+                        3. Build the Controller:
+                    </p>
+
+                    <PreCode >
+                        {`// src/product/product.controller.ts
+import { Controller, Get } from '../utils/decorators/routing';
+import { Inject } from '../utils/decorators/injecting';
+import { ProductServices } from './product.services';
+
+@Controller('/products')
+export class ProductController {
+    
+    @Inject(ProductServices)
+    private productServices!: ProductServices;
+
+    @Get('/')
+    findAll(req: Request, res: Response) {
+        const products = this.productServices.findAll();
+        return res.json({ data: products });
+    }
+}`}
+                    </PreCode>
+                    <p className="text-gray-400">
+                        4. Register Your Controller:
+                    </p>
+
+                    <PreCode >
+                        {`// src/middlewares.ts
+import { ProductController } from './product/product.controller';
+
+class AppMiddleware {
+    private controller = [
+        UserController,
+        ProductController  // Add your new controller
+    ]
+    
+    // ... rest of the class
+}`}
                     </PreCode>
                 </section>
 
                 {/* Conclusion */}
                 <section className="space-y-4">
+                    <h2 className="text-3xl font-semibold text-white">
+                        Why This Approach Wins
+                    </h2>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Reduced Boilerplate
+                    </h2>
+                    <p className="text-gray-400">
+                        Traditional Express setup often involves repetitive route definitions. Our framework cuts this down significantly:
+                    </p>
+                    <h2 className="text-gray-400">
+                        Before (Traditional Express):
+                    </h2>
+                    <PreCode >
+                        {`router.get('/users', userController.findAll);
+router.get('/users/:id', userController.findOne);
+router.post('/users', validateUser, userController.create);
+// ... more routes`}
+                    </PreCode>
+                    <h2 className="text-gray-400">
+                        After (Express Made Easy):
+                    </h2>
+                    <PreCode >
+                        {`@Controller('/users')
+class UserController {
+    @Get('/') findAll() { }
+    @Get('/:id') findOne() { }
+    @Post('/') create() { }
+}`}
+                    </PreCode>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Better Error Handling
+                    </h2>
+                    <h2 className="text-gray-400">
+                        The framework includes structured exception handling with custom error types:
+                    </h2>
+                    <PreCode >
+                        {`// Automatic validation error handling
+throw new ValidationException("Validation Failed", validationErrors);
+
+// Easy not found handling
+throw new NotFoundException('User not found');`}
+                    </PreCode>
+
+                    <h2 className="text-2xl font-semibold text-white">
+                        Type Safety
+                    </h2>
+                    <p className="text-gray-400">
+                        Full TypeScript support means you catch errors at compile time rather than runtime, with intelligent type inference throughout your application.
+                    </p>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Migration from Traditional Express
+                    </h2>
+                    <p className="text-gray-400">
+                        If you're coming from traditional Express, you'll find the transition smooth:
+                    </p>
+                    <ol className="list-disc list-inside text-gray-400">
+                        <li>Keep your existing middleware - they work exactly the same</li>
+                        <li>Convert route definitions to use decorators</li>
+                        <li>Organize business logic into service classes</li>
+                        <li>Use our validation decorators instead of manual validation middleware</li>
+                    </ol>
+
+                    <h2 className="text-3xl font-semibold text-white">
+                        Advanced Features
+                    </h2>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Custom Decorators
+                    </h2>
+                    <p className="text-gray-400">
+                        Extend the framework with your own decorators using the same patterns:
+                    </p>
+                    <PreCode >
+                        {`function Auth(role: string): MethodDecorator {
+    return (target, propertyKey, descriptor) => {
+        // Your authentication logic
+    };
+}`}
+                    </PreCode>
+
+                    <h2 className="text-2xl font-semibold text-white">
+                        Plugin System
+                    </h2>
+                    <p className="text-gray-400">
+                        The modular architecture makes it easy to add features like logging, caching, or database integrations.
+                    </p>
+                    <h2 className="text-2xl font-semibold text-white">
+                        Performance Considerations
+                    </h2>
+                    <p className="text-gray-400">
+                        The framework adds minimal overhead - most of the decorator processing happens at application startup, so runtime performance is comparable to vanilla Express.js.
+                    </p>
+
+                    <span className="mt-4 mb-6 sm:mb-10 block w-full h-px"></span>
                     <h2 className="text-2xl font-semibold text-white">
                         Conclusion
                     </h2>
                     <p className="text-gray-400">
-                        This custom Express framework provides a scalable, structured
-                        way to build APIs using modern TypeScript patterns.
+                        Express Made Easy gives you the best of both worlds: the robustness and ecosystem of Express.js combined with modern development patterns that reduce boilerplate and improve maintainability. It's particularly beneficial for:
+                    </p>
+                    <ol className="list-disc list-inside text-gray-400">
+                        <li>Teams adopting TypeScript</li>
+                        <li>Projects requiring consistent API patterns</li>
+                        <li>Organize business logic into service classes</li>
+                        <li>Developers who want faster iteration without sacrificing code quality</li>
+                    </ol>
+                    <p className="text-gray-400">
+                        The framework is designed to be incrementally adoptable - you can start with one endpoint and gradually migrate your entire API.
                     </p>
                     <p className="text-gray-400">
-                        It’s ideal for developers who want more control than traditional
-                        Express apps while avoiding the complexity of full-fledged
-                        frameworks.
+                        Ready to try it out? Clone the example structure above and start building your next API with the Express.js you love, but with modern developer experience improvements that will save you hours of development time.
                     </p>
                 </section>
 

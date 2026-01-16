@@ -209,7 +209,7 @@ const useAnimationLoop = (
             if (rafRef.current !== null) {
                 cancelAnimationFrame(rafRef.current);
                 rafRef.current = null;
-            }
+            } 
             lastTimestampRef.current = null;
         };
     }, [
