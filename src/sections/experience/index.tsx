@@ -17,7 +17,7 @@ const ExperienceSection = () => {
                 {data.experience.map((exp: any, index: number) => (
                     <BentoTilt
                         key={index}
-                        className="glass-balanced w-full flex flex-col py-6 px-4 md:px-9 "
+                        className="glass-balanced w-full flex flex-col py-6 px-7 md:px-9 "
                     >
                         {/* Top Row: Logo + Company + Dates */}
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between w-full gap-4 sm:gap-0">
