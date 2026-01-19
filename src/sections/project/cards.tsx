@@ -79,7 +79,7 @@ const Card = ({ title, description, src, url, i, color, targetScale, preview}: a
                 `}
                     onClick={() => window.open(url, "_blank")}
                 >
-                    Learn More
+                    {preview === "DEMO" ? "View Demo" : "Live Preview"}
                 </button>
             </div>
 
