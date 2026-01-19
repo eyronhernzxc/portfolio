@@ -18,9 +18,13 @@ body {
 @theme {
     --font-inter: "Inter", sans-serif;
     --font-anton: "Anton", sans-serif;
+    --color-secondary: #6a7282;
+    --color-primary: #fff;
+    --color-accent: oklch(70.7% 0.022 261.325);
 }
 
 @layer utilities {
+
 
     .gradient-1 {
         background-color: #09090b;

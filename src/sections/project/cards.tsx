@@ -22,14 +22,14 @@ const Card = ({ title, description, src, url, i, color, targetScale, preview}: a
 
                 <div className="flex h-full md:mt-[50px] gap-[50px] flex-col md:flex-row">
                     {/* Text Section */}
-                    <div className="md:h-full w-full md:w-[40%] relative text-white">
+                    <div className="md:h-full w-full md:w-[40%] relative text-primary">
                         <h2 className="m-0 text-xl md:text-4xl text-left tracking-wide">
                             {title}
                         </h2>
 
                         <span className="hidden md:block h-5 w-full" />
 
-                        <p className="hidden md:block text-base first-letter:text-3xl tracking-wide">
+                        <p className="hidden md:block text-base first-letter:text-3xl tracking-wide text-accent">
                             {description}
                         </p>
 
@@ -37,7 +37,7 @@ const Card = ({ title, description, src, url, i, color, targetScale, preview}: a
                             href={url}
                             target="_blank"
                             rel="noreferrer"
-                            className="hidden md:block overflow-hidden text-white/50 hover:text-white text-sm !absolute bottom-0 left-0 transition-colors glass-balanced py-3 px-6"
+                            className="hidden md:block overflow-hidden text-accent hover:text-primary text-sm !absolute bottom-0 left-0 transition-colors glass-balanced py-3 px-6"
                         >
                             {preview === "DEMO" ? "View Demo" : "Live Preview"}
                         </a>
@@ -53,7 +53,7 @@ const Card = ({ title, description, src, url, i, color, targetScale, preview}: a
                                 crossOrigin="anonymous"
                                 className="
                                     w-full h-full object-cover
-                                    grayscale
+                                    xgrayscale
                                     transition-all duration-500 ease-out
                                     group-hover:grayscale-0
                                 "
@@ -73,9 +73,9 @@ const Card = ({ title, description, src, url, i, color, targetScale, preview}: a
                     className={`
                         md:hidden
                         mt-6
-                        relative p-3  cursor-pointer text-white/50 shadow-lg
+                        relative p-3  cursor-pointer text-accent hover:text-primary shadow-lg
                         transition-all duration-500  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
-                        !w-full !h-10 text-sm hover:text-white
+                        !w-full !h-10 text-sm 
                 `}
                     onClick={() => window.open(url, "_blank")}
                 >

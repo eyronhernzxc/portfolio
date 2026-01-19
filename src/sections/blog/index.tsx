@@ -103,10 +103,10 @@ const BlogSection = () => {
             ref={containerRef}
             className="blog-section w-full flex flex-col items-center relative mb-40 px-4"
         >
-            <p className="text-center text-sm text-white/50 uppercase tracking-widest">
+            <p className="text-center text-sm text-accent uppercase tracking-widest">
                 Guides & Tutorials
             </p>
-            <p className="text-center text-3xl font-bold text-white/70">
+            <p className="text-center text-3xl font-bold text-primary">
                 How to Build & Use My Projects
             </p>
 
@@ -129,7 +129,7 @@ const BlogSection = () => {
                 <button
                     className={`
                         mt-8
-                        relative p-3  cursor-pointer text-white/50 shadow-lg
+                        relative p-3  cursor-pointer text-accent hover:text-primary shadow-lg
                         transition-all duration-300  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
                         !w-32 !h-10 text-sm
                 `}

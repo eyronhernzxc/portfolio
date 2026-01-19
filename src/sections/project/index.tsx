@@ -10,10 +10,10 @@ export const ProjectSection = () => {
 
     return (
         <main className="max-w-7xl mx-auto">
-            <p className="text-center text-sm text-white/50 uppercase tracking-widest">
+            <p className="text-center text-sm text-accent uppercase tracking-widest">
                 From Idea to Code
             </p>
-            <p className="text-center text-3xl font-bold text-white/70">
+            <p className="text-center text-3xl font-bold text-primary">
                 Real Projects & Builds
             </p>
             <div className="max-w-7xl mx-auto relative mt-24 ">

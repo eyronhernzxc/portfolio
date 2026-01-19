@@ -22,7 +22,7 @@ const CustomExpressFramework = () => {
 
                 {/* Introduction */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Introduction
                     </h2>
                     <p className="text-gray-400">
@@ -32,7 +32,7 @@ const CustomExpressFramework = () => {
 
                 {/* Setup */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         What Makes Express Made Easy Special?
                     </h2>
 
@@ -48,14 +48,14 @@ const CustomExpressFramework = () => {
                         <li>Minimal boilerplate without sacrificing functionality</li>
                     </ul>
 
-                    <h3 className="text-xl font-semibold text-white">Core Architecture Overview</h3>
+                    <h3 className="text-xl font-semibold text-primary">Core Architecture Overview</h3>
 
                     <p className="text-gray-400">
                         The framework follows a clean separation of concerns with controllers handling HTTP logic, services containing business logic, and models defining data structures.
                     </p>
 
-                    <h3 className="text-xl font-semibold text-white">The Main Components</h3>
-                    <h3 className="text-xl font-semibold text-white">1. Configuration Management</h3>
+                    <h3 className="text-xl font-semibold text-primary">The Main Components</h3>
+                    <h3 className="text-xl font-semibold text-primary">1. Configuration Management</h3>
                     <p className="text-gray-400">
                         The framework loads configuration from environment variables with sensible defaults:
                     </p>
@@ -74,7 +74,7 @@ const config = {
 
                 {/* Architecture */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         2. Decorator-Based Routing
                     </h2>
 
@@ -111,7 +111,7 @@ export class UserController {
 
                 {/* Controller */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         3. Built-in Validation
                     </h2>
                     <p className="text-gray-400">
@@ -130,13 +130,13 @@ export const CreateUserSchema: ValidationChain[] = [
 ];`}
                     </PreCode>
                     <p className="text-gray-400">
-                        In this case we use <strong className="text-white">express-validator</strong> but you can still use your favourite validation library.
+                        In this case we use <strong className="text-primary">express-validator</strong> but you can still use your favourite validation library.
                     </p>
                 </section>
 
                 {/* Validation */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         4. Dependency Injection
                     </h2>
                     <p className="text-gray-400">
@@ -157,10 +157,10 @@ export function Inject(type: any) {
                     </PreCode>
 
                     <span className="mt-4 mb-6 sm:mb-10 block w-full h-px "></span>
-                    <h2 className="text-3xl font-semibold text-white">
+                    <h2 className="text-3xl font-semibold text-primary">
                         Getting Started
                     </h2>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Installation
                     </h2>
 
@@ -172,7 +172,7 @@ npm install -D typescript @types/express ts-node nodemon`}
 
                 {/* Services */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Project Structure
                     </h2>
 
@@ -199,7 +199,7 @@ npm install -D typescript @types/express ts-node nodemon`}
 
                 {/* Error Handling */}
                 <section className="space-y-4">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Creating Your First API
                     </h2>
                     <p className="text-gray-400">
@@ -279,10 +279,10 @@ class AppMiddleware {
 
                 {/* Conclusion */}
                 <section className="space-y-4">
-                    <h2 className="text-3xl font-semibold text-white">
+                    <h2 className="text-3xl font-semibold text-primary">
                         Why This Approach Wins
                     </h2>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Reduced Boilerplate
                     </h2>
                     <p className="text-gray-400">
@@ -308,7 +308,7 @@ class UserController {
     @Post('/') create() { }
 }`}
                     </PreCode>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Better Error Handling
                     </h2>
                     <h2 className="text-gray-400">
@@ -322,13 +322,13 @@ throw new ValidationException("Validation Failed", validationErrors);
 throw new NotFoundException('User not found');`}
                     </PreCode>
 
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Type Safety
                     </h2>
                     <p className="text-gray-400">
                         Full TypeScript support means you catch errors at compile time rather than runtime, with intelligent type inference throughout your application.
                     </p>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Migration from Traditional Express
                     </h2>
                     <p className="text-gray-400">
@@ -341,10 +341,10 @@ throw new NotFoundException('User not found');`}
                         <li>Use our validation decorators instead of manual validation middleware</li>
                     </ol>
 
-                    <h2 className="text-3xl font-semibold text-white">
+                    <h2 className="text-3xl font-semibold text-primary">
                         Advanced Features
                     </h2>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Custom Decorators
                     </h2>
                     <p className="text-gray-400">
@@ -358,13 +358,13 @@ throw new NotFoundException('User not found');`}
 }`}
                     </PreCode>
 
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Plugin System
                     </h2>
                     <p className="text-gray-400">
                         The modular architecture makes it easy to add features like logging, caching, or database integrations.
                     </p>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Performance Considerations
                     </h2>
                     <p className="text-gray-400">
@@ -372,7 +372,7 @@ throw new NotFoundException('User not found');`}
                     </p>
 
                     <span className="mt-4 mb-6 sm:mb-10 block w-full h-px"></span>
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-2xl font-semibold text-primary">
                         Conclusion
                     </h2>
                     <p className="text-gray-400">

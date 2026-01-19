@@ -4,14 +4,14 @@ const ContactComponent = () => {
         <div className="w-[90%] glass-balanced overflow-hidden translate-x-1/2 right-1/2 md:w-[270px] space-y-3 !fixed md:translate-x-0 bottom-8 md:right-8 z-50 gradient-4 border border-white/10 p-4 rounded-xl">
 
             <div className="flex gap-3">
-                <p className="text-xs text-white/50">Get in touch</p>
+                <p className="text-xs text-accent">Get in touch</p>
             </div>
 
             <div className="flex gap-x-2">
                 <img src="/assets/me.jpg" alt="Ivan Macabontoc" className="w-10 h-10 rounded-full object-cover" />
                 <div>
-                    <p className="text-sm text-white/70 capitalized">{data.name}</p>
-                    <p className="text-xs text-white/50">{data.career_role}</p>
+                    <p className="text-sm text-primary capitalized">{data.name}</p>
+                    <p className="text-xs text-secondary">{data.career_role}</p>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@ const ContactComponent = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-        text-xs text-white/50 hover:text-white
+        text-xs text-accent hover:text-primary
         w-full
         flex items-center justify-center
         py-2

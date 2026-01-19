@@ -30,26 +30,26 @@ const BlogCard = ({
                         ref={imgRef}
                         src={img}
                         alt="image"
-                        className="group-hover:grayscale-0 grayscale object-cover group-hover:scale-110 transition-transform duration-500 w-full h-full"
+                        className="group-hover:grayscale-0 xgrayscale object-cover group-hover:scale-110 transition-transform duration-500 w-full h-full"
                         crossOrigin="anonymous"
                     />
 
                 </div>
 
                 <div className="mt-4 flex-1 flex flex-col">
-                    <h1 className="text-white/30 text-xl transition-colors group-hover:text-white">
+                    <h1 className="text-primary text-xl transition-colors ">
                         {title}
                     </h1>
-                    <p className="text-white/30 mt-2 text-sm transition-colors group-hover:text-white/70 flex-1 line-clamp-2">
+                    <p className="text-accent mt-2 text-sm transition-colors  flex-1 line-clamp-2">
                         {desc}
                     </p>
-                    <div className="w-full p-1 mt-4 text-xs text-white/30">{readtime} read time</div>
+                    <div className="w-full py-1 mt-4 text-xs text-secondary">{readtime} read time</div>
                     <button
                         className={`
                         mt-3
-                        relative p-3  cursor-pointer text-white/50 shadow-lg
+                        relative p-3  cursor-pointer  shadow-lg
                         transition-all duration-500  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
-                        !w-full !h-10 text-sm hover:text-white
+                        !w-full !h-10 text-sm text-accent hover:text-primary
                 `}
                     onClick={() => window.open(link, "_blank")}
                     >
