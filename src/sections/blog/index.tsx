@@ -98,48 +98,6 @@ const BlogSection = () => {
         setDisplayCount((prev) => Math.min(prev + 3, blogs.length));
     };
 
-    return (
-        <div
-            ref={containerRef}
-            className="blog-section w-full flex flex-col items-center relative mb-40 px-4"
-        >
-            <p className="text-center text-sm text-accent uppercase tracking-widest">
-                Guides & Tutorials
-            </p>
-            <p className="text-center text-3xl font-bold text-primary">
-                How to Build & Use My Projects
-            </p>
-
-            <div className="mt-14 max-w-5xl mx-auto w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 md:gap-y-12 place-items-center px-6">
-                {displayedBlogs
-                    .slice()
-                    .map((blog, index) => (
-                        <BlogCard
-                            key={index}
-                            title={blog.title}
-                            desc={blog.desc}
-                            link={blog.link}
-                            img={blog.img}
-                            readtime={blog.readtime}
-                        />
-                    ))}
-            </div>
-
-            {displayCount < blogs.length && (
-                <button
-                    className={`
-                        mt-8
-                        relative p-3  cursor-pointer text-accent hover:text-primary shadow-lg
-                        transition-all duration-300  flex items-center justify-center gradient-4 glass-balanced overflow-hidden
-                        !w-32 !h-10 text-sm
-                `}
-                    onClick={handleSeeMore}
-                >
-                    See More
-                </button>
-            )}
-        </div>
-    );
 };
 
 export { BlogSection };
