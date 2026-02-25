@@ -3,7 +3,6 @@ import { LightRaysBackground } from "@/components/bg/light-rays";
 import Noise from "@/components/bg/noise";
 import LogoLoop from "@/components/loop-icon";
 import { TopBar } from "@/components/navigation/top-bar";
-import { BlogSection } from "@/sections/blog";
 import { HeroSection } from "@/sections/hero";
 import { ProjectSection } from "@/sections/project";
 import CountUp from "@/components/count";
@@ -88,7 +87,6 @@ const HomePage = () => {
             {/* SECTION */}
             <ProjectSection />
             <ExperienceSection />
-            <BlogSection />
             <div className="h-20 w-full"/>
 
 
