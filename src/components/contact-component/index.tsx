@@ -8,7 +8,7 @@ const ContactComponent = () => {
             </div>
 
             <div className="flex gap-x-2">
-                <img src="/assets/me.jpg" alt="Ivan Macabontoc" className="w-10 h-10 rounded-full object-cover" />
+                <img src="/assets/me.jpg" alt="Ron Hernandez" className="w-10 h-10 rounded-full object-cover" />
                 <div>
                     <p className="text-sm text-primary capitalized">{data.name}</p>
                     <p className="text-xs text-secondary">{data.career_role}</p>
